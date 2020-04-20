@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <h1>Twitch tracking app</h1>
+  <div id="app" class="bg-dark">
+    <router-view/>
   </div>
 </template>
 
