@@ -5,12 +5,12 @@
                   <i class="fab fa-twitch h1"></i>
                   <Logo/>
                   <h5 class="mb-5">Login</h5>
-                  <form>
+                  <form @submit.prevent="login">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Enter email" id="email">
+                        <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                        <input type="password" class="form-control" placeholder="Enter password" id="pwd" v-model="password">
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label ">
@@ -37,6 +37,25 @@ export default {
     components: {
         Button,
         Logo
+    },
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+        login() {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then(data => {
+                    console.log(`User logged in`)
+                })
+                .catch(function(error) {
+                    var errorCode = error.code
+                    var errorMessage = error.message
+                    console.log(errorMessage)
+            });
+        }
     }
 }
 </script>
