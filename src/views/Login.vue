@@ -33,6 +33,8 @@
 import Button from '@/components/Button'
 import Logo from '@/components/Logo'
 
+import firebase from 'firebase'
+
 export default {
     components: {
         Button,
@@ -48,7 +50,8 @@ export default {
         login() {
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 .then(data => {
-                    console.log(`User logged in`)
+                    console.log(`User with email ${data.user.email} logged in successfuly`)
+                    this.$router.push('/')
                 })
                 .catch(function(error) {
                     var errorCode = error.code

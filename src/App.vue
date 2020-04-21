@@ -1,6 +1,5 @@
 <template>
-  <div id="app" class="bg-dark">
-    Main page
+  <div id="app" class="bg-dark vh-100">
     <router-view/>
   </div>
 </template>
@@ -22,7 +21,6 @@ export default {
             'Client-ID': '2c6c0j18xxty4mx9e43pn1p5s210u9'
           }
         })
-        console.log(response.data.data)
       } catch (error) {
         console.log(error)
       }
