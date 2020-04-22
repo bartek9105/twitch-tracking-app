@@ -2,12 +2,14 @@
   <div id="app" class="bg-dark vh-100">
     <router-view/>
     <Navbar/>
+    <Search/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Navbar from '@/components/Navbar'
+import Search from '@/components/Search'
 
 export default {
   data(){
@@ -32,7 +34,8 @@ export default {
     this.getTopStreams()
   },
   components:{
-    Navbar
+    Navbar,
+    Search
   }
 }
 </script>

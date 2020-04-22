@@ -1,9 +1,9 @@
 <template>
     <header>
         <nav class="navbar navbar-dark navbar-expand-md container-fluid">
-            
-            <div class="navbar-brand pt-5 ml-2"><i class="fab fa-twitch h3 mr-2 d-inline-block" alt="" style="float: left;"></i><Logo/></div>
-            <div style="clear:both;"></div>
+            <a href="#">
+                <div class="navbar-brand pt-5 ml-2"><i class="fab fa-twitch h3 mr-2 d-inline-block float-left" alt=""></i><Logo/></div>
+            </a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
 				<span class="icon-bar"></span>
@@ -50,5 +50,8 @@ export default {
     .navbar-toggler .icon-bar{
         width: 50px !important;
         height: 3px !important;
+    }
+    ul.nav a:hover{
+        color: #38B2AC !important;
     }
 </style>
