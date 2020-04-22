@@ -5,12 +5,12 @@
                   <i class="fab fa-twitch h1"></i>
                   <Logo/>
                   <h5 class="mb-5">Signup</h5>
-                  <form>
+                  <form @submit.prevent="signup">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Enter email" id="email">
+                        <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                        <input type="password" class="form-control" placeholder="Enter password" id="pwd" v-model="password">
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label ">
@@ -33,10 +33,33 @@
 import Button from '@/components/Button'
 import Logo from '@/components/Logo'
 
+import firebase from 'firebase'
+
 export default {
     components: {
         Button,
         Logo
+    },
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+        signup() {
+            firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                .then(data => {
+                    console.log(`User with email ${data.user.email} signed up successfuly`)
+                    this.$router.push('/login')
+                    }
+                )            
+                .catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(error.message)
+                });
+        }
     }
 }
 </script>
