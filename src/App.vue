@@ -1,12 +1,13 @@
 <template>
-  <div id="app" class="bg-dark">
-
+  <div id="app" class="bg-dark vh-100">
     <router-view/>
+    <Navbar/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Navbar from '@/components/Navbar'
 
 export default {
   data(){
@@ -19,10 +20,9 @@ export default {
       try {
         const response = await axios.get('https://api.twitch.tv/helix/streams?first=20', {
           headers: {
-            'Client-ID': '2c6c0j18xxty4mx9e43pn1p5s210u9'
+            'Client-ID': process.env.VUE_APP_TWITCH_KEY
           }
         })
-        console.log(response.data.data)
       } catch (error) {
         console.log(error)
       }
@@ -30,6 +30,9 @@ export default {
   },
   mounted(){
     this.getTopStreams()
+  },
+  components:{
+    Navbar
   }
 }
 </script>
