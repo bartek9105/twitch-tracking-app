@@ -1,11 +1,13 @@
 <template>
   <div id="app" class="bg-dark">
     <router-view/>
+    <Navbar/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Navbar from '@/components/Navbar'
 
 export default {
   data(){
@@ -29,6 +31,9 @@ export default {
   },
   mounted(){
     this.getTopStreams()
+  },
+  components:{
+    Navbar
   }
 }
 </script>

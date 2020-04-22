@@ -1,5 +1,5 @@
 <template>
-  <h2 class="mb-5">Twitch<span class="text-info">Tracker</span></h2>
+  <h3 class="mb-5">Twitch<span class="text-info">Tracker</span></h3>
 </template>
 
 <script>
