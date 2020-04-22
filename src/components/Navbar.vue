@@ -14,13 +14,13 @@
 			<div class="collapse navbar-collapse justify-content-end mr-5" id="mainmenu">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Favourites</a>
+                        <a class="nav-link text-white" href="#">Favourites</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Explore</a>
+                        <a class="nav-link text-white" href="#">Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link text-white" href="#">Profile</a>
                     </li>
                 </ul>
             </div>

@@ -20,7 +20,7 @@ export default {
       try {
         const response = await axios.get('https://api.twitch.tv/helix/streams?first=20', {
           headers: {
-            'Client-ID': '2c6c0j18xxty4mx9e43pn1p5s210u9'
+            'Client-ID': process.env.VUE_APP_TWITCH_KEY
           }
         })
         console.log(response.data.data)
