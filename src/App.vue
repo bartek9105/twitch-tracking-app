@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-dark">
+  <div id="app" class="bg-dark vh-100">
     <router-view/>
     <Navbar/>
   </div>
@@ -23,7 +23,6 @@ export default {
             'Client-ID': process.env.VUE_APP_TWITCH_KEY
           }
         })
-        console.log(response.data.data)
       } catch (error) {
         console.log(error)
       }
