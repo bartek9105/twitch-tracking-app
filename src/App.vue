@@ -2,6 +2,7 @@
   <div id="app" class="bg-dark vh-100">
     <router-view/>
     <Navbar/>
+    <Search/>
     <Footer/>
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script>
 import axios from 'axios'
 import Navbar from '@/components/Navbar'
+import Search from '@/components/Search'
 import Footer from '@/components/Footer'
 
 export default {
@@ -35,6 +37,7 @@ export default {
   },
   components:{
     Navbar,
+    Search,
     Footer
   }
 }
