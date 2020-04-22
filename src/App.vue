@@ -3,6 +3,7 @@
     <router-view/>
     <Navbar/>
     <Search/>
+    <Footer/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import axios from 'axios'
 import Navbar from '@/components/Navbar'
 import Search from '@/components/Search'
+import Footer from '@/components/Footer'
 
 export default {
   data(){
@@ -35,7 +37,8 @@ export default {
   },
   components:{
     Navbar,
-    Search
+    Search,
+    Footer
   }
 }
 </script>
