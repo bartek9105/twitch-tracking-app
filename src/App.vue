@@ -2,12 +2,14 @@
   <div id="app" class="bg-dark vh-100">
     <router-view/>
     <Navbar/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export default {
   data(){
@@ -32,7 +34,8 @@ export default {
     this.getTopStreams()
   },
   components:{
-    Navbar
+    Navbar,
+    Footer
   }
 }
 </script>
