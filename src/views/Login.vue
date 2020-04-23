@@ -4,7 +4,7 @@
               <div class="col-sm-12 col-md-6 text-center">
                   <i class="fab fa-twitch h1"></i>
                   <Logo/>
-                  <h5 class="mb-5">Login</h5>
+                  <h5 class="my-5">Login</h5>
                   <form @submit.prevent="login">
                     <div class="form-group">
                         <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="email">
