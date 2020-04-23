@@ -18,6 +18,30 @@ Vue.use(Toasted, {
   iconPack: 'fontawesome'
 })
 
+Vue.toasted.register('success',
+    (payload) => {
+    	return payload.message
+    },
+    {
+      type: 'success',
+      position: 'bottom-center',
+      duration: '3000',
+      icon: 'fa-check-circle'
+    }
+)
+
+Vue.toasted.register('error',
+    (payload) => {
+    	return payload.message
+    },
+    {
+      type: 'error',
+      position: 'bottom-center',
+      duration: '3000',
+      icon: 'fa-exclamation-circle'
+    }
+)
+
 new Vue({
   router,
   store,

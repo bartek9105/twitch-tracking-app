@@ -47,26 +47,20 @@ export default {
         }
     },
     methods: {
-        login() {
-            firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-                .then(data => {
-                    console.log(`User with email ${data.user.email} logged in successfuly`)
-                    this.$toasted.success('Successfully logged in', {
-                        position: 'bottom-center',
-                        duration: '3000',
-                        icon: 'fa-check-circle'
-                    })
-                    this.$router.push('/')
+        async login() {
+            try {
+                const result = await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                this.$toasted.global.success({
+                    message: 'Successfully logged in'
                 })
-                .catch(err => {
-                    var errorCode = err.code
-                    var errorMessage = err.message
-                    this.$toasted.error(errorMessage, {
-                        position: 'bottom-center',
-                        duration: '3000',
-                        icon: 'fa-cexclamation-circle'
-                    })
-            });
+                this.$router.push('/')                
+            } catch (err) {
+                console.log(err.code, err.message)
+                this.$toasted.global.error({
+                    message: err.message
+                })                
+            }
+
         }
     }
 }
