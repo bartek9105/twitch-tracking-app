@@ -8,11 +8,15 @@ import config from '@/firebaseConfig.js'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Toasted from 'vue-toasted';
 
 firebase.initializeApp(config)
 
 Vue.config.productionTip = false
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
+Vue.use(Toasted, {
+  iconPack: 'fontawesome'
+})
 
 new Vue({
   router,

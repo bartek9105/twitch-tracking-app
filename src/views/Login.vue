@@ -51,12 +51,21 @@ export default {
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 .then(data => {
                     console.log(`User with email ${data.user.email} logged in successfuly`)
+                    this.$toasted.success('Successfully logged in', {
+                        position: 'bottom-center',
+                        duration: '3000',
+                        icon: 'fa-check-circle'
+                    })
                     this.$router.push('/')
                 })
-                .catch(function(error) {
-                    var errorCode = error.code
-                    var errorMessage = error.message
-                    console.log(errorMessage)
+                .catch(err => {
+                    var errorCode = err.code
+                    var errorMessage = err.message
+                    this.$toasted.error(errorMessage, {
+                        position: 'bottom-center',
+                        duration: '3000',
+                        icon: 'fa-cexclamation-circle'
+                    })
             });
         }
     }

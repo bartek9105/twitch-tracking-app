@@ -51,13 +51,23 @@ export default {
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                 .then(data => {
                     console.log(`User with email ${data.user.email} signed up successfuly`)
+                    this.$toasted.success('Successfully registered', {
+                        position: 'bottom-center',
+                        duration: '3000',
+                        icon: 'fa-check-circle'
+                        
+                    })
                     this.$router.push('/login')
                     }
                 )            
-                .catch(function(error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(error.message)
+                .catch(err => {
+                    var errorCode = err.code;
+                    var errorMessage = err.message;
+                    this.$toasted.error(err.message, {
+                        position: 'bottom-center',
+                        duration: '3000',
+                        icon: 'fa-cexclamation-circle'
+                    })
                 });
         }
     }
