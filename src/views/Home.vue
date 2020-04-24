@@ -2,6 +2,7 @@
   <div>
     <Navbar/>
     <Search/>
+    <TopGames/>
     <TopStreams/>
     <Footer/>
   </div>
@@ -10,6 +11,7 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Search from '@/components/Search'
+import TopGames from '@/components/TopGames'
 import TopStreams from '@/components/TopStreams'
 import Footer from '@/components/Footer'
 
@@ -17,6 +19,7 @@ export default {
     components: {
         Navbar,
         Search,
+        TopGames,
         TopStreams,
         Footer
     }
