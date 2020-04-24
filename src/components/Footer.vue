@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div id="footer" class="fixed-bottom text-center text-muted pt-4">
+    <div id="footer" class="text-center text-muted pt-4 pb-4">
       <span id="footer-text">Powered by Twitch API 2020</span>
     </div>
   </footer>

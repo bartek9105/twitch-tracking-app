@@ -1,0 +1,108 @@
+<template>
+  <div id="top-streams">
+    <p id="top-streams-header" class="ml-4 pt-3">| Top streams</p>
+    <div class="ml-3 row row-cols-2 row-cols-md-4">
+      <template v-for="stream in splicedStreams">
+        <div class="col mb-4" :key="stream.id">
+          <div class="card border-0 h-100">
+            <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
+            <div class="card-body">
+              <div class="d-sm-flex h-45">
+                <span id="green-line" class="pr-1">|</span>
+                <h5 class="card-title text-white pt-1 text-truncate">{{ stream.channel.status }}</h5>
+              </div>
+              <div class="d-sm-inline-flex">
+                <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
+                <p class="streamer-name text-muted">{{ stream.channel.display_name }}</p>
+              </div>
+
+              <div class="d-sm-inline-flex">
+                <i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>
+                <p class="stream-viewer-count text-muted">{{ stream.viewers }}</p>
+              </div>
+              <div class="d-sm-flex pl-2">
+                <span id="add-to-fav" class="text-muted">Dodaj do ulubionych</span>
+                <i class="far fa-star text-white pl-2 pt-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="row justify-content-center">
+      <button
+        class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
+        @click="streamsShown += 4"
+      >Load More</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import Button from "@/components/Button";
+
+export default {
+  name: "TopStreams",
+  components: {
+    Button
+  },
+  data() {
+    return {
+      streams: [],
+      streamsShown: 4
+    };
+  },
+  computed: {
+    splicedStreams() {
+      const splicedStreams = this.streams.slice(0, this.streamsShown);
+      return splicedStreams;
+    }
+  },
+  methods: {
+    //TODO separate replacing size of thumbnails to another method
+    async getTopStreams() {
+      try {
+        const response = await axios.get(
+          "https://api.twitch.tv/kraken/streams/",
+          {
+            headers: {
+              "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+              Accept: "application/vnd.twitchtv.v5+json"
+            }
+          }
+        );
+        this.streams = response.data.streams
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  mounted() {
+    this.getTopStreams();
+  }
+};
+</script>
+
+<style>
+#top-streams-header {
+  color: #38b2ac;
+  font-size: 23px;
+}
+.card {
+  width: 18rem;
+}
+.card-body {
+  background-color: #1a202c;
+}
+#top-streams {
+  background-color: #2d3748;
+}
+#green-line {
+  font-size: 20px;
+  color: #38b2ac;
+}
+.card-title {
+  font-size: 15px;
+}
+</style>
