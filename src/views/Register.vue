@@ -47,18 +47,20 @@ export default {
         }
     },
     methods: {
-        signup() {
-            firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-                .then(data => {
-                    console.log(`User with email ${data.user.email} signed up successfuly`)
-                    this.$router.push('/login')
-                    }
-                )            
-                .catch(function(error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(error.message)
-                });
+        async signup() {
+            try{
+                const result = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                this.$toasted.global.success({
+                    message: 'Successfully registered'
+                })
+                this.$router.push('/login') 
+            }
+            catch(err){
+                console.log(err.code, err.message)
+                this.$toasted.global.error({
+                    message: err.message
+                })
+            }       
         }
     }
 }
