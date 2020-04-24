@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
 			</button>
 		
-			<div class="collapse navbar-collapse justify-content-end mr-5" id="mainmenu">
+			<div class="collapse navbar-collapse justify-content-end" id="mainmenu">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Explore</a>
@@ -23,6 +23,13 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Profile</a>
                     </li>
+                    <li class="nav-item d-flex align-items-center"  @click="logout">
+                        <router-link to="/login">
+                            <a class="nav-link text-white" href="#">Logout
+                            <i class="fas logout-icon fa-sign-out-alt text-white ml-1"></i>
+                            </a>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
 
@@ -32,18 +39,36 @@
 
 <script>
 import Logo from '@/components/Logo'
+import firebase from 'firebase'
 
 export default {
     name: 'Navbar',
-    components:{
+    components: {
         Logo
+    },
+    methods: {
+        async logout() {
+            try {
+                const result = await firebase.auth().signOut()             
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 }
 </script>
 
-<style>
-    .navbar-nav li{
-        font-size: 20px;
+<style lang="scss" scoped>
+    li{
+        a {
+            &:hover{
+                color: #117a8b !important;
+                text-decoration: none;
+                .logout-icon{
+                    color: #117a8b !important;
+                }
+            }
+        }
     }
     .navbar {
         background-color: #2d3748;
@@ -51,8 +76,9 @@ export default {
     .navbar-toggler .icon-bar{
         width: 50px !important;
         height: 3px !important;
+
     }
-    ul.nav a:hover{
-        color: #38B2AC !important;
+    .logout-icon {
+        font-size: 15px;
     }
 </style>
