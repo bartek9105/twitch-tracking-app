@@ -7,7 +7,7 @@
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
 				<span class="icon-bar"></span>
-                <span class="icon- lang="scss"bar"></span>
+                <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
 			</button>
 		
