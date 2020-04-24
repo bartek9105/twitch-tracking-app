@@ -1,7 +1,7 @@
 <template>
   <div id="top-streams">
     <p id="top-streams-header" class="ml-4 pt-3">| Top streams</p>
-    <div class="ml-3 row row-cols-1 row-cols-md-4">
+    <div class="ml-3 row row-cols-2 row-cols-md-4">
       <template v-for="stream in splicedStreams">
         <div class="col mb-4" :key="stream.id">
           <div class="card border-0 h-100">
@@ -9,28 +9,20 @@
             <div class="card-body">
               <div class="d-sm-flex h-45">
                 <span id="green-line" class="pr-1">|</span>
-                <h5 class="card-title text-white pt-2">{{ stream.slicedStatus }}</h5>
+                <h5 class="card-title text-white pt-1 text-truncate">{{ stream.channel.status }}</h5>
               </div>
               <div class="d-sm-inline-flex">
-                <img
-                  src="../assets/user-alt-solid.svg"
-                  class="human-vector pr-1 pl-2"
-                  alt="streamer-icon"
-                />
-                <p class="streamer-name text-muted pt-3">{{ stream.channel.display_name }}</p>
+                <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
+                <p class="streamer-name text-muted">{{ stream.channel.display_name }}</p>
               </div>
 
               <div class="d-sm-inline-flex">
-                <img
-                  src="../assets/chart-line-solid.svg"
-                  class="chart-vector pr-1 pl-2"
-                  alt="chart-icon"
-                />
-                <p class="stream-viewer-count text-muted pt-3">{{ stream.viewers }}</p>
+                <i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>
+                <p class="stream-viewer-count text-muted">{{ stream.viewers }}</p>
               </div>
               <div class="d-sm-flex pl-2">
                 <span id="add-to-fav" class="text-muted">Dodaj do ulubionych</span>
-                <img src="../assets/star-solid.svg" class="star-vector pl-2" alt="star-icon" />
+                <i class="far fa-star text-white pl-2 pt-1"></i>
               </div>
             </div>
           </div>
@@ -80,31 +72,14 @@ export default {
             }
           }
         );
-        this.streams = response.data.streams.map(stream => {
-          if (stream.channel.status.length > 50) {
-            let slicedStatus = stream.channel.status.slice(0, 50) + "...";
-            return { ...stream, slicedStatus };
-          }
-          else {
-              let slicedStatus = stream.channel.status
-            return { ...stream, slicedStatus };
-          }
-          
-        });
+        this.streams = response.data.streams
       } catch (error) {
         console.log(error);
       }
     },
-    loadMore() {
-      this.streamsShown *= 2;
-    }
-    // setThumbnailSize() {
-
-    // }
   },
   mounted() {
     this.getTopStreams();
-    // this.setThumbnailSize();
   }
 };
 </script>
@@ -124,7 +99,7 @@ export default {
   background-color: #2d3748;
 }
 #green-line {
-  font-size: 30px;
+  font-size: 20px;
   color: #38b2ac;
 }
 .card-title {
