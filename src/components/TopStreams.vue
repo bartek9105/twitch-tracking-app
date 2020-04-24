@@ -1,9 +1,9 @@
 <template>
   <div id="top-streams">
     <p id="top-streams-header" class="ml-4 pt-3">| Top streams</p>
-    <div class="ml-3 row row-cols-2 row-cols-md-4">
+    <div class="m-auto pl-4 row row-cols-2 row-cols-md-4">
       <template v-for="stream in splicedStreams">
-        <div class="col mb-4" :key="stream.id">
+        <div class="col mb-5" :key="stream.id">
           <div class="card border-0 h-100">
             <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
             <div class="card-body">
@@ -29,9 +29,9 @@
         </div>
       </template>
     </div>
-    <div class="row justify-content-center">
-      <button
-        class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
+    <div class="row justify-content-center m-auto">
+      <button v-if="streamsShown < this.streams.length"
+        class="btn btn-info mb-5 rounded-pill px-5 shadow"
         @click="streamsShown += 4"
       >Load More</button>
     </div>
