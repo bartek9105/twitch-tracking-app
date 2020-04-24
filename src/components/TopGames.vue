@@ -25,8 +25,8 @@
         </div>
         <div class="row justify-content-center">
             <button
-                class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
-                @click="gamesShown += 4"
+                class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow m-auto"
+                @click="gamesShown += 4" v-if="gamesShown < this.topGames.length"
             >Load More</button>
         </div>
     </div>
@@ -67,7 +67,6 @@
             }
             );
             this.topGames = response.data.top
-            console.log(this.topGames)
         } catch (error) {
             console.log(error);
         }
