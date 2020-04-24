@@ -1,7 +1,10 @@
 <template>
   <div>
     <Navbar/>
-    <Header header_name="Explore" paragraph="Explore top streams, games and clips"></Header>
+    <Header>
+      <template v-slot:header>Explore</template>
+      <template v-slot:para>Explore top streams, games and clips</template>
+    </Header>
     <Search/>
     <TopStreams/>
     <Footer/>

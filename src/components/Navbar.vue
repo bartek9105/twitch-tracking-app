@@ -45,6 +45,9 @@ export default {
     .navbar-nav li{
         font-size: 20px;
     }
+    .navbar {
+        background-color: #2d3748;
+    }
     .navbar-toggler .icon-bar{
         width: 50px !important;
         height: 3px !important;
