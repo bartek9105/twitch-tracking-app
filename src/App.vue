@@ -3,14 +3,15 @@
     <router-view/>
     <Navbar/>
     <Search/>
+    <TopStreams/>
     <Footer/>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import Navbar from '@/components/Navbar'
 import Search from '@/components/Search'
+import TopStreams from '@/components/TopStreams'
 import Footer from '@/components/Footer'
 
 export default {
@@ -20,24 +21,14 @@ export default {
     }
   },
   methods: {
-    async getTopStreams(){
-      try {
-        const response = await axios.get('https://api.twitch.tv/helix/streams?first=20', {
-          headers: {
-            'Client-ID': process.env.VUE_APP_TWITCH_KEY
-          }
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    
   },
   mounted(){
-    this.getTopStreams()
   },
   components:{
     Navbar,
     Search,
+    TopStreams,
     Footer
   }
 }
