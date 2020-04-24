@@ -14,11 +14,12 @@
 			<div class="collapse navbar-collapse justify-content-end" id="mainmenu">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Favourites</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-white" href="#">Explore</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Favourites</a>
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Profile</a>
                     </li>
@@ -69,11 +70,13 @@ export default {
             }
         }
     }
-    .navbar-toggler {
-       .icon-bar {
-            width: 50px !important;
-            height: 3px !important;
-        } 
+    .navbar {
+        background-color: #2d3748;
+    }
+    .navbar-toggler .icon-bar{
+        width: 50px !important;
+        height: 3px !important;
+
     }
     .logout-icon {
         font-size: 15px;
