@@ -1,10 +1,7 @@
 <template>
   <div id="app" class="bg-dark vh-100">
     <router-view/>
-    <Navbar/>
-    <Search/>
-    <TopStreams/>
-    <Footer/>
+
   </div>
 </template>
 
