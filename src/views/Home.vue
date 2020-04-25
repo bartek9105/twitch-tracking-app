@@ -8,6 +8,7 @@
     <Search/>
     <TopGames/>
     <TopStreams/>
+    <TopClips/>
     <Footer/>
   </div>
 </template>
@@ -18,6 +19,7 @@ import Header from '@/components/Header'
 import Search from '@/components/Search'
 import TopGames from '@/components/TopGames'
 import TopStreams from '@/components/TopStreams'
+import TopClips from '@/components/TopClips'
 import Footer from '@/components/Footer'
 
 export default {
@@ -27,6 +29,7 @@ export default {
         Search,
         TopGames,
         TopStreams,
+        TopClips,
         Footer
     }
 }
