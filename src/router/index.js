@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Register from '@/views/Register'
 import Login from '@/views/Login'
 import Home from '@/views/Home'
+import Favourites from '@/views/Favourites'
+import Profile from '@/views/Profile'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/login',
     component: Login,
     name: 'Login'
+  },
+  {
+    path: '/favs',
+    component: Favourites,
+    name: 'Favourites'
+  },
+  {
+    path: '/profile',
+    component: Profile,
+    name: 'Profile settings'
   }
 ]
 
