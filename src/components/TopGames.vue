@@ -1,7 +1,7 @@
 <template>
     <div id="top-games">
         <p id="top-games-header" class="ml-4 pt-3">| Top games</p>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row ml-5">
                 <template v-for="game in splicedGames">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="game.game.id">
@@ -9,8 +9,7 @@
                             <img :src="game.game.box.large" class="card-img-top img-fluid" alt="game-thumbnail" />
                             <div class="card-body">
                             <div class="d-sm-flex h-45">
-                                <span id="green-line" class="pr-1">|</span>
-                                <h5 class="card-title text-white pt-1 text-truncate">{{ game.game.name }}</h5>
+                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ game.game.name }}</h5>
                             </div>
 
                             <div class="d-sm-flex pl-2">
