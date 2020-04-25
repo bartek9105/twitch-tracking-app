@@ -5,10 +5,8 @@
                 <i class="fab fa-twitch h3 text-white mr-3" alt=""></i>
                 <Logo/>
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
-				<span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
+				<span class="navbar-toggler-icon"></span>
 			</button>
 		
 			<div class="collapse navbar-collapse justify-content-end" id="mainmenu">
@@ -72,11 +70,6 @@ export default {
     }
     .navbar {
         background-color: #2d3748;
-    }
-    .navbar-toggler .icon-bar{
-        width: 50px !important;
-        height: 3px !important;
-
     }
     .logout-icon {
         font-size: 15px;

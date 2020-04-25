@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row ml-5">
                 <template v-for="game in splicedGames">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" :key="game.game.id">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="game.game.id">
                         <div class="card border-0 h-100 w-75">
                             <img :src="game.game.box.large" class="card-img-top img-fluid" alt="game-thumbnail" />
                             <div class="card-body">
