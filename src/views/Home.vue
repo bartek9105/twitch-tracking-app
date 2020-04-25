@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="overflow-hidden">
     <Navbar/>
     <Header>
       <template v-slot:header>Explore</template>
       <template v-slot:para>Explore top streams, games and clips</template>
     </Header>
     <Search/>
+    <TopGames/>
     <TopStreams/>
     <Footer/>
   </div>
@@ -15,6 +16,7 @@
 import Navbar from '@/components/Navbar'
 import Header from '@/components/Header'
 import Search from '@/components/Search'
+import TopGames from '@/components/TopGames'
 import TopStreams from '@/components/TopStreams'
 import Footer from '@/components/Footer'
 
@@ -23,6 +25,7 @@ export default {
         Navbar,
         Header,
         Search,
+        TopGames,
         TopStreams,
         Footer
     }
