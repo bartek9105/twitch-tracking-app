@@ -12,6 +12,7 @@ import TopStreams from '@/components/TopStreams'
 import Footer from '@/components/Footer'
 
 export default {
+
   data(){
     return {
       
