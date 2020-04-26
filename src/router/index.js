@@ -5,6 +5,7 @@ import Login from '@/views/Login'
 import Home from '@/views/Home'
 import Favourites from '@/views/Favourites'
 import Profile from '@/views/Profile'
+import Stream from '@/views/Stream'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/profile',
     component: Profile,
     name: 'Profile settings'
+  },
+  {
+    path: '/stream/:id',
+    component: Stream,
+    name: 'Stream info'
   }
 ]
 

@@ -4,24 +4,26 @@
     <div class="m-auto container-fluid">
       <div class="row ml-2">
       <template v-for="stream in splicedStreams">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5" :key="stream.id">
-          <div class="card border-0">
-            <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
-            <div class="card-body">
-              <div class="d-sm-flex">
-                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ stream.channel.status }}</h5>
-              </div>
-              <div class="d-sm-inline-flex">
-                <p class="streamer-name text-muted"><i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>{{ stream.channel.display_name }}</p>
-              </div>
-              <div class="d-sm-inline-flex">
-                <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
-              </div>
-              <div class="d-sm-flex pl-2">
-                <span id="add-to-fav" class="text-muted">Dodaj do ulubionych<i class="far fa-star text-white pl-2 pt-1"></i></span>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5" :key="stream._id">
+          <router-link :to="'/stream/' + stream._id">
+            <div class="card border-0">
+              <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
+              <div class="card-body">
+                <div class="d-sm-flex">
+                  <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ stream.channel.status }}</h5>
+                </div>
+                <div class="d-sm-inline-flex">
+                  <p class="streamer-name text-muted"><i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>{{ stream.channel.display_name }}</p>
+                </div>
+                <div class="d-sm-inline-flex">
+                  <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
+                </div>
+                <div class="d-sm-flex pl-2">
+                  <span id="add-to-fav" class="text-muted">Dodaj do ulubionych<i class="far fa-star text-white pl-2 pt-1"></i></span>
+                </div>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </template>
       </div>
