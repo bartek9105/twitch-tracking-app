@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Protect from './protect'
 import Register from '@/views/Register'
 import Login from '@/views/Login'
 import Home from '@/views/Home'
@@ -12,7 +13,8 @@ const routes = [
   {
     path: '/',
     component: Home,
-    name: 'Home'
+    name: 'Home',
+    beforeEnter: Protect
   },
   {
     path: '/register',
@@ -27,12 +29,16 @@ const routes = [
   {
     path: '/favs',
     component: Favourites,
-    name: 'Favourites'
+    name: 'Favourites',
+    beforeEnter: Protect
+    
   },
   {
     path: '/profile',
     component: Profile,
-    name: 'Profile settings'
+    name: 'Profile settings',
+    beforeEnter: Protect
+    
   }
 ]
 
