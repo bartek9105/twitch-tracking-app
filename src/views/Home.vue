@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden">
+  <div id="home-page-container" class="overflow-hidden">
     <Navbar/>
     <Header>
       <template v-slot:header>Explore</template>
@@ -36,5 +36,8 @@ export default {
 </script>
 
 <style>
-
+#home-page-container {
+  position: relative;
+  min-height: 100vh;
+}
 </style>
