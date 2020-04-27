@@ -30,7 +30,6 @@
               <a class="nav-link text-white" href="#">Favourites</a>
             </router-link>
           </li>
-
           <li class="nav-item">
             <router-link to="/profile">
               <a class="nav-link text-white" href="#">Profile</a>
@@ -59,10 +58,16 @@ export default {
   components: {
     Logo
   },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    }
+  },
   methods: {
     async logout() {
       try {
         const result = await firebase.auth().signOut();
+
         this.$toasted.global.success({
                     message: 'Successfully logged out'
                 })
