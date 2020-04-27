@@ -8,7 +8,7 @@ import config from '@/firebaseConfig.js'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import Toasted from 'vue-toasted';
+import Toasted from 'vue-toasted'
 
 firebase.initializeApp(config)
 
@@ -17,30 +17,6 @@ Vue.use(BootstrapVue)
 Vue.use(Toasted, {
   iconPack: 'fontawesome'
 })
-
-Vue.toasted.register('success',
-    (payload) => {
-    	return payload.message
-    },
-    {
-      type: 'success',
-      position: 'bottom-center',
-      duration: '3000',
-      icon: 'fa-check-circle'
-    }
-)
-
-Vue.toasted.register('error',
-    (payload) => {
-    	return payload.message
-    },
-    {
-      type: 'error',
-      position: 'bottom-center',
-      duration: '3000',
-      icon: 'fa-exclamation-circle'
-    }
-)
 
 new Vue({
   router,

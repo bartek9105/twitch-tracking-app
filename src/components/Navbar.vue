@@ -60,12 +60,10 @@ export default {
     Logo
   },
   methods: {
+    // THIS METHOD NEEDS TO BE MOVED TO VUEX
     async logout() {
       try {
         const result = await firebase.auth().signOut();
-        this.$toasted.global.success({
-                    message: 'Successfully logged out'
-                })
       } catch (error) {
         console.log(error);
       }
