@@ -39,7 +39,6 @@ const routes = [
     path: '/stream/:id',
     component: Stream,
     name: 'Stream',
-    
   }
 ]
 

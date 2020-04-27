@@ -6,7 +6,7 @@
       <template v-for="stream in splicedStreams">
         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5" :key="stream.id">
           <div class="card border-0 h-100 w-100">
-            <router-link :to="{name: 'Stream', params: {id: stream._id, stream: stream}}">
+            <router-link :to="{name: 'Stream', params: {id: stream.channel._id, stream: stream}}">
             <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
             <div class="card-body">
               <div class="d-flex">

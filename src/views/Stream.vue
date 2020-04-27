@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="stream-page-container">
     <Navbar />
     <Header>
       <template v-slot:header>Stream overview</template>
@@ -32,4 +32,8 @@ export default {
 };
 </script>
 <style>
+#stream-page-container {
+  position: relative;
+  min-height: 100vh;
+}
 </style>

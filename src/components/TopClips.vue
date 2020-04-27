@@ -30,7 +30,7 @@
                 </template>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <button
                 class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
                 @click="clipsShown += 4" v-if="clipsShown < this.topClips.length"

@@ -13,7 +13,10 @@ export default {};
 <style>
 #footer {
   background-color: #1a202c;
-  height: 8%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 #footer-text {
   font-size: 15px;
