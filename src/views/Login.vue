@@ -55,19 +55,11 @@ export default {
         }
     },
     methods: {
-        async login() {
-            try {
-                const result = await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-                this.$toasted.global.success({
-                    message: 'Successfully logged in'
-                })
-                this.$router.push('/')                
-            } catch (err) {
-                console.log(err.code, err.message)
-                this.$toasted.global.error({
-                    message: err.message
-                })                
-            }
+        login() {
+            this.$store.dispatch('signUserIn', {
+                email: this.email,
+                password: this.password
+            })
         },
         async fbLogin() {
             try {

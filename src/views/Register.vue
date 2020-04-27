@@ -5,7 +5,7 @@
                   <i class="fab fa-twitch h1"></i>
                   <Logo/>
                   <h5 class="my-5">Signup</h5>
-                  <form @submit.prevent="signup">
+                  <form @submit.prevent="signUp">
                     <div class="form-group">
                         <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="email">
                     </div>
@@ -47,20 +47,11 @@ export default {
         }
     },
     methods: {
-        async signup() {
-            try{
-                const result = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-                this.$toasted.global.success({
-                    message: 'Successfully registered'
-                })
-                this.$router.push('/login') 
-            }
-            catch(err){
-                console.log(err.code, err.message)
-                this.$toasted.global.error({
-                    message: err.message
-                })
-            }       
+        signUp() {
+            this.$store.dispatch('signUserUp', {
+                email: this.email,
+                password: this.password
+            })
         }
     }
 }
