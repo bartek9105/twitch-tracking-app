@@ -74,6 +74,7 @@ export default {
       email: "",
       url: ""
     };
+  },
   computed: {
     user () {
       return this.$store.getters.user
