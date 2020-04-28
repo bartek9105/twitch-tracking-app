@@ -108,4 +108,7 @@ export default {
 .card-title {
   font-size: 15px;
 }
+a {
+  text-decoration: none !important;
+}
 </style>
