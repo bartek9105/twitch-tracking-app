@@ -11,7 +11,7 @@
                             </router-link>
                             <div class="card-body">
                             <div class="d-sm-flex h-45">
-                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ stream.channel.status }}</h5>
+                                    <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ stream.channel.status }}</h5>
                             </div>
                             
                             <div class="d-sm-flex">
