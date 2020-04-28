@@ -96,6 +96,7 @@ export default {
 }
 img:hover {
   background-color: #38b2ac;
+  cursor: pointer;
 }
 .active {
   background-color: #38b2ac;
