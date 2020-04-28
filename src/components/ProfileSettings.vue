@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style>
-img {
+.img m-2 {
   width: 52px;
   height: 77px;
 }
