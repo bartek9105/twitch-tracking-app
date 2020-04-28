@@ -22,18 +22,18 @@
         <ul class="nav justify-content-end">
           <li class="nav-item">
             <router-link to="/">
-              <a class="nav-link text-white" href="#">Explore</a>
+              <a class="nav-link text-white" :class="{'active': '/' == page}" href="#">Explore</a>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/favs">
-              <a class="nav-link text-white" href="#">Favourites</a>
+              <a class="nav-link text-white" :class="{'active': '/favs' == page}" href="#">Favourites</a>
             </router-link>
           </li>
 
           <li class="nav-item">
             <router-link to="/profile">
-              <a class="nav-link text-white" href="#">Profile</a>
+              <a class="nav-link text-white" :class="{'active': '/profile' == page}" href="#">Profile</a>
             </router-link>
           </li>
           <li class="nav-item d-flex align-items-center" @click="logout">
@@ -59,17 +59,22 @@ export default {
   components: {
     Logo
   },
+  data() {
+    return {
+      page: this.$route.path
+    }
+  },
   methods: {
     async logout() {
       try {
         const result = await firebase.auth().signOut();
         this.$toasted.global.success({
-                    message: 'Successfully logged out'
-                })
+          message: "Successfully logged out"
+        });
       } catch (error) {
         console.log(error);
       }
-    }
+    },
   }
 };
 </script>
@@ -95,5 +100,8 @@ li {
 }
 .logout-icon {
   font-size: 15px;
+}
+a .active {
+  color: #38b2ac !important;
 }
 </style>
