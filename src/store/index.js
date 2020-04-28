@@ -7,16 +7,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    favourites: null
   },
   getters: {
     user (state) {
       return state.user
+    },
+    favourites (state) {
+      return state.favourites
     }
   },
   mutations: {
     setUser (state, payload) {
       state.user = payload
+    },
+    addFavourite (state, payload) {
+      state.favourites.push(payload)
+    },
+    loadFavourites (state, payload) {
+      state.favourites = payload
     }
   },
   actions: {
@@ -43,6 +53,29 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
       }
+    },
+    addToFavourites({ commit }, payload) {
+      firebase.firestore().collection("favourites").add({
+        name: payload
+      })
+      .then(function() {
+          commit('addFavourite', payload)
+          
+          console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });    
+    },
+    loadFavourites({ commit }){
+      firebase.firestore().collection("favourites").get().then((querySnapshot) => {
+        const favourites = []
+        querySnapshot.forEach((doc) => {
+            favourites.push(doc.data().name.name)
+        });
+        commit('loadFavourites', favourites)
+      });
+    
     }
   },
   modules: {

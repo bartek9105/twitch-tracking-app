@@ -22,7 +22,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title)"></i>
                             </div>
                             </div>
                         </div>
@@ -63,22 +63,27 @@
     methods: {
         //TODO separate replacing size of thumbnails to another method
         async getTopClips() {
-        try {
-            const response = await axios.get(
-            "https://api.twitch.tv/kraken/clips/top",
-            {
-                headers: {
-                "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
-                Accept: "application/vnd.twitchtv.v5+json"
-                }
+            try {
+                const response = await axios.get(
+                "https://api.twitch.tv/kraken/clips/top",
+                    {
+                        headers: {
+                        "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+                        Accept: "application/vnd.twitchtv.v5+json"
+                        }
+                    }
+                )
+                this.topClips = response.data.clips
+                console.log(this.topClips[9])
+            } catch (error) {
+                console.log(error);
             }
-            );
-            this.topClips = response.data.clips
-            console.log(this.topClips)
-        } catch (error) {
-            console.log(error);
-        }
         },
+        addToFav(name){
+            this.$store.dispatch('addToFavourites', {
+                name: name
+            })
+        }
     },
     mounted() {
         this.getTopClips();
