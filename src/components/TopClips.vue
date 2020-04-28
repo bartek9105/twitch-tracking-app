@@ -74,7 +74,6 @@
             }
             );
             this.topClips = response.data.clips
-            console.log(this.topClips)
         } catch (error) {
             console.log(error);
         }

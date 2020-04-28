@@ -7,6 +7,7 @@ import Home from '@/views/Home'
 import Favourites from '@/views/Favourites'
 import Profile from '@/views/Profile'
 import Stream from '@/views/Stream'
+import Game from '@/views/Game'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,12 @@ const routes = [
     path: '/stream/:id',
     component: Stream,
     name: 'Stream',
+    beforeEnter: Protect
+  },
+  {
+    path: '/game/:gameName',
+    component: Game,
+    name: 'Game',
     beforeEnter: Protect
   }
 ]
