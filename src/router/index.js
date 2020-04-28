@@ -36,9 +36,9 @@ const routes = [
     
   },
   {
-    path: '/profile/:id',
+    path: '/profile',
     component: Profile,
-    name: 'Profile settings',
+    name: 'Profile',
     beforeEnter: Protect
   },
   {
