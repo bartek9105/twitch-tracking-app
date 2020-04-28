@@ -98,7 +98,7 @@ img:hover {
   background-color: #38b2ac;
   cursor: pointer;
 }
-.active {
+.active .img m-2{
   background-color: #38b2ac;
 }
 </style>
