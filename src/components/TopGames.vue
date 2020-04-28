@@ -4,12 +4,16 @@
         <div class="container-fluid">
             <div class="row ml-5">
                 <template v-for="game in splicedGames">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="game.game.id">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="game.game._id">
                         <div class="card border-0 h-100 w-75">
-                            <img :src="game.game.box.large" class="card-img-top img-fluid" alt="game-thumbnail" />
+                            <router-link :to="{name: 'Game', params:{gameName: game.game.name}}">
+                                <img :src="game.game.box.large" class="card-img-top img-fluid" alt="game-thumbnail" />
+                            </router-link>
                             <div class="card-body">
                             <div class="d-sm-flex h-45">
-                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ game.game.name }}</h5>
+                                <router-link :to="{name: 'Game', params:{gameName: game.game.name}}">
+                                    <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ game.game.name }}</h5>
+                                </router-link>
                             </div>
 
                             <div class="d-sm-flex pl-2">
