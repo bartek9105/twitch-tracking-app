@@ -30,5 +30,6 @@ export default {
 #profile-page-container {
   position: relative;
   min-height: 100vh;
+  background-color: #2d3748;
 }
 </style>
