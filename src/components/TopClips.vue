@@ -6,7 +6,9 @@
                 <template v-for="clip in splicedClips">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="clip.tracking_id">
                         <div class="card border-0 h-100 w-100">
-                            <img :src="clip.thumbnails.medium" class="card-img-top img-fluid" alt="clip-thumbnail" />
+                            <router-link :to="{name: 'Clip', params:{slug: clip.slug}}">
+                                <img :src="clip.thumbnails.medium" class="card-img-top img-fluid" alt="clip-thumbnail" />
+                            </router-link>
                             <div class="card-body">
                             <div class="d-sm-flex h-45">                           
                                 <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ clip.title }}</h5>
