@@ -94,11 +94,11 @@ export default {
   width: 52px;
   height: 77px;
 }
-img:hover {
+img.m-2:hover {
   background-color: #38b2ac;
   cursor: pointer;
 }
-.img.m-2.active{
+.img.m-2.active {
   background-color: #38b2ac;
 }
 </style>

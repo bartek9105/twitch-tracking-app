@@ -42,7 +42,7 @@
               </a>
             </router-link>
           </li>
-          <div class="bg-secondary rounded-circle pl-2 pr-2 pt-1 pb-1 mb-2">
+          <div v-if="url.length > 0" class="bg-secondary rounded-circle pl-2 pr-2 pt-1 pb-1 mb-2">
             <img id="profile-avatar" class :src="url[0]" alt="profile-avatar" />
           </div>
           <li class="nav-item d-flex align-items-center mb-2" @click="logout">
