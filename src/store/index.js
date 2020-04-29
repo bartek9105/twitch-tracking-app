@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: null,
-    favourites: null
+    favourites: []
   },
   getters: {
     user (state) {
@@ -25,8 +25,11 @@ export default new Vuex.Store({
     addFavourite (state, payload) {
       state.favourites.push(payload)
     },
-    loadFavourites (state, payload) {
+    loadFavourite (state, payload) {
       state.favourites = payload
+    },
+    remove (state, payload) {
+      Vue.delete(state.favourites, payload)
     }
   },
   actions: {
@@ -54,28 +57,25 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
-    addToFavourites({ commit }, payload) {
-      firebase.firestore().collection("favourites").add({
-        name: payload
-      })
-      .then(function() {
-          commit('addFavourite', payload)
-          
-          console.log("Document successfully written!");
-      })
-      .catch(function(error) {
-          console.error("Error writing document: ", error);
-      });    
+    addToFavourites({ commit }, payload) {   
+      const userId = firebase.auth().currentUser.uid 
+      firebase.database().ref('favourites/' + userId).push({
+        name: payload.name,
+        id: payload.id,
+        img: payload.img
+      }).then(() => {
+        commit('addFavourite', payload)
+      }).catch(err => console.log(err))
     },
-    loadFavourites({ commit }){
-      firebase.firestore().collection("favourites").get().then((querySnapshot) => {
-        const favourites = []
-        querySnapshot.forEach((doc) => {
-            favourites.push(doc.data().name.name)
-        });
-        commit('loadFavourites', favourites)
-      });
-    
+    loadFavourites({ commit }, payload){
+      commit('loadFavourite', payload)
+    },
+    removeFavourite({ commit }, payload) {
+      const userId = firebase.auth().currentUser.uid 
+      firebase.database().ref('favourites/' + userId).child(payload).remove().then(() => {
+        commit('remove', payload)
+      }).catch(err => console.log(err))
+      commit('remove', payload)
     }
   },
   modules: {

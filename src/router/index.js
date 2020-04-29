@@ -33,7 +33,6 @@ const routes = [
     component: Favourites,
     name: 'Favourites',
     beforeEnter: Protect
-    
   },
   {
     path: '/profile',

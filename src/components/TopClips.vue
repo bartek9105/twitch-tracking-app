@@ -22,7 +22,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title)"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium)"></i>
                             </div>
                             </div>
                         </div>
@@ -74,14 +74,16 @@
                     }
                 )
                 this.topClips = response.data.clips
-                console.log(this.topClips[9])
+
             } catch (error) {
                 console.log(error);
             }
         },
-        addToFav(name){
+        addToFav(name, id, img){
             this.$store.dispatch('addToFavourites', {
-                name: name
+                name: name,
+                id: id,
+                img: img
             })
         }
     },

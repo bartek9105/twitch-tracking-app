@@ -21,7 +21,7 @@
             </div>
             </router-link>
             <div class="d-sm-flex pl-2">
-                <span id="add-to-fav" class="text-muted">Dodaj do ulubionych<i @click="addToFav(stream.channel.status)" class="far fa-star pl-2 pt-1"></i></span>
+                <span id="add-to-fav" class="text-muted">Dodaj do ulubionych<i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium)" class="far fa-star pl-2 pt-1"></i></span>
             </div>
           </div>
         </div>
@@ -80,9 +80,11 @@ export default {
         console.log(error);
       }
     },
-    addToFav(name){
+    addToFav(name, id, img){
       this.$store.dispatch('addToFavourites', {
-        name: name
+        name: name,
+        id: id,
+        img: img
       })
     }
   },
