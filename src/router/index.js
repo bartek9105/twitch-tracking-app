@@ -8,6 +8,7 @@ import Favourites from '@/views/Favourites'
 import Profile from '@/views/Profile'
 import Stream from '@/views/Stream'
 import Game from '@/views/Game'
+import Clip from '@/views/Clip'
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,12 @@ const routes = [
     path: '/game/:gameName',
     component: Game,
     name: 'Game',
+    beforeEnter: Protect
+  },
+  {
+    path: '/clip/:slug',
+    component: Clip,
+    name: 'Clip',
     beforeEnter: Protect
   }
 ]

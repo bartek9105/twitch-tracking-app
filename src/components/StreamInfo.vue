@@ -2,10 +2,18 @@
   <div id="single-stream-content" class="container-fluid">
     <h2
       id="stream-title"
-      class="text-white justify-content-center m-auto pl-5 row"
+      class="text-white justify-content-center m-auto pl-5 row pb-md-4"
     >{{this.stream.channel.status}}</h2>
     <div class="row">
-      <div id="stream-info" class="pl-5 pt-5 col-xl-3 col-lg-3 pt-md-5 align-self-center">
+      <div id="stream-thumbnail" class="embed-responsive embed-responsive-16by9 mb-xl-5 mr-5 mt-xl-5 ml-md-5 mt-md-0 ml-5 ml-xl-5 mb-md-5">
+        <iframe class="embed-responsive-item"
+          :src="'https://player.twitch.tv/?channel=' + this.stream.channel.display_name"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen="true"
+        ></iframe>
+      </div>
+      <div id="stream-info" class="pl-5 pt-5 col-xl-3 col-lg-4 pt-md-0 mb-xl-5 align-self-center">
         <h4 id="about-stream" class="text-white mb-4 pl-3">
           <span id="green-line" class="pr-2">|</span>About Stream
         </h4>
@@ -35,12 +43,7 @@
           </span>
         </div>
       </div>
-      <div id="stream-thumbnail" class="d-none d-lg-block pt-5 pl-5">
-        <img :src="this.stream.preview.large" alt="stream_thumbnail" />
-      </div>
-
-      <!-- <div class="row"> -->
-      <div id="streamer-info" class="pl-5 pt-5 col-lg-3 pb-5 pt-md-0 align-self-center">
+      <div id="streamer-info" class="pl-5 pt-lg-0 col-lg-4 pb-xl-5 pb-md-3 pt-md-0 mb-xl-5">
         <h4 id="about" class="text-white mb-4 pl-3">
           <span id="green-line" class="pr-2">|</span>About Streamer
         </h4>
@@ -63,14 +66,14 @@
           </span>
         </div>
       </div>
-    </div>
-    <div class="row justify-content-xl-center justify-content-md-start">
-      <div id="description" class="pl-5 pt-xl-4 pt-md-0 ml-md-3 ml-3">
+      <div class="row justify-content-xl-center justify-content-md-start">
+      <div id="description" class="pl-5 pt-xl-4 pt-md-0 pt-3 ml-md-4 ml-4">
         <span class="text-white">Description:</span>
         <p class="text-muted pt-3 mb-5 pb-5 mr-5">{{this.stream.channel.description}}</p>
       </div>
     </div>
   </div>
+    </div>
 </template>
 
 <script>
@@ -80,14 +83,14 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      stream: ''
+      stream: ""
     };
   },
   computed: {
     editedStreams() {
       let channel_created_at = this.stream.channel.created_at.slice(0, 10);
       let stream_created_at = this.stream.created_at.slice(0, 10);
-      return { ...this.stream, channel_created_at, stream_created_at};
+      return { ...this.stream, channel_created_at, stream_created_at };
     }
   },
   methods: {
