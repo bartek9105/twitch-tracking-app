@@ -41,7 +41,6 @@ export default {
           }
         );
         this.game = await response.data.games
-        console.log(this.game[0]._id)
       } catch (error) {
         console.log(error);
       }
