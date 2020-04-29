@@ -2,15 +2,15 @@
     <div id="clip-info" class="mt-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12 m-auto">
-                    <img :src="clip.thumbnails.medium" alt="clip-thumbnail" class="h-100 w-100">
+                <div class="embed-responsive embed-responsive-21by9">
+                    <iframe :src="clip.embed_url" class="embed-responsive-item" frameborder='0' scrolling='no' allowfullscreen='true'></iframe>
                 </div>
                 <div class="col-lg-11 offset-lg-1 col-md-11 offset-md-1 col-sm-11 offset-sm-1 col-11 offset-xs-1 mt-5 mb-5">
                     <h2 class="text-white">{{ clip.title }}</h2>
                     <div class="mt-3">
                         <span id="clip-created" class="text-muted">
                             <i class="far fa-calendar pr-1"></i>
-                            {{ editedClips.clip_created_at }}
+                            Clip created at: {{ editedClips.clip_created_at }}
                         </span>
                     </div>
                     <div class="mt-3">
