@@ -25,7 +25,7 @@
               <div class="form-group">
                 <input
                   v-model="input"
-                  type="email"
+                  type="text"
                   class="form-control"
                   placeholder="Enter a phrase"
                 />
@@ -40,7 +40,7 @@
         <div id="found-games" v-if="found.games">
         <div id="games" class="container-fluid">
           <div class="row justify-content-center ml-5">
-            <template v-for="game in found.games.slice(0,this.itemShown)">
+            <template v-for="game in found.games.slice(0, this.itemShown)">
               <div class="mb-4" :key="game.id">
                 <div class="card border-0 w-75">
                   <router-link :to="{name: 'Game', params: {gameName: game.name}}">
@@ -52,12 +52,12 @@
                           {{ game.name }}
                         </h5>
                       </div>
-                      <div class="d-flex pl-2">
-                        <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                        <i class="far fa-star text-white pl-1 pt-1"></i>
-                      </div>
                     </div>
                   </router-link>
+                  <div class="d-flex pl-2">
+                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                    <i class="far fa-star pl-2 pt-1" @click="addToFav(game.name, game._id, game.box.large)"></i>
+                  </div>
                 </div>
               </div>
             </template>
@@ -100,14 +100,13 @@
                           {{ stream.viewers }}
                         </p>
                       </div>
-                      <div class="d-sm-flex pl-2">
-                        <span id="add-to-fav" class="text-muted">
-                          Add to favourites
-                          <i class="far fa-star text-white pl-2 pt-1"></i>
-                        </span>
-                      </div>
                     </div>
                   </router-link>
+                  <div class="d-sm-flex pl-2">
+                    <span id="add-to-fav" class="text-muted">Add to favourites
+                    </span>
+                    <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium)" class="far fa-star pl-2 pt-1"></i>
+                  </div>
                 </div>
               </div>
             </template>
@@ -165,6 +164,13 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    addToFav(name, id, img){
+      this.$store.dispatch('addToFavourites', {
+          name: name,
+          id: id,
+          img: img
+      })
     }
   },
   mounted() {}
