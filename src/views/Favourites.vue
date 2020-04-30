@@ -29,20 +29,6 @@ export default {
         FavStreams,
         FavClips,
         Footer
-    },
-
-    methods: {
-      loadFavs () {
-        firebase.database().ref('favourites/' + firebase.auth().currentUser.uid).once('value').then(data => {
-          this.$store.dispatch('loadFavourites', data.val())
-          }); 
-      },
-      removeFav (id) {
-        this.$store.dispatch('removeFavourite', id)
-      }
-    },
-    mounted () {
-      this.loadFavs()   
     }
 }
 </script>

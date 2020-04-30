@@ -93,7 +93,7 @@ export default new Vuex.Store({
         }
       })
       if (unique) {
-        await firebase.database().ref(`favourites/${userId}`).push({
+        firebase.database().ref(`favourites/${userId}`).push({
           name: payload.name,
           id: payload.id,
           img: payload.img,
@@ -112,11 +112,14 @@ export default new Vuex.Store({
     },
     removeFavourite({ commit }, payload) {
       const userId = firebase.auth().currentUser.uid 
-      firebase.database().ref('favourites/' + userId).child(payload).remove().then(() => {
+      firebase.database().ref('favourites/' + userId).orderByChild('id').equalTo(payload).once('value').then((snapshot) => {
+        snapshot.forEach(child => {
+          child.ref.remove()
+        })
+      }).then(() => {
         commit('remove', payload)
         Vue.toasted.success("Removed from favourites", toastOptions)
       }).catch(err => console.log(err))
-      commit('remove', payload)
     },
     async logout({ commit }) {
       try {
