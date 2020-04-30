@@ -33,5 +33,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .fa-star {
+    &:hover {
+      cursor: pointer
+    }
+  }
 </style>

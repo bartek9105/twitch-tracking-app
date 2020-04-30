@@ -21,8 +21,9 @@
                                 <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
                             </div>
                             <div class="d-sm-flex pl-2">
-                                <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1"></i>
+                            <span id="add-to-fav" class="text-muted">Dodaj do ulubionych
+                            </span>
+                            <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium)" class="far fa-star pl-2 pt-1"></i>
                             </div>
                             </div>
                         </div>

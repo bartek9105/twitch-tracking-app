@@ -57,15 +57,30 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
-    addToFavourites({ commit }, payload) {   
-      const userId = firebase.auth().currentUser.uid 
-      firebase.database().ref('favourites/' + userId).push({
-        name: payload.name,
-        id: payload.id,
-        img: payload.img
-      }).then(() => {
-        commit('addFavourite', payload)
-      }).catch(err => console.log(err))
+    async addToFavourites({ commit }, payload) {   
+      const userId = firebase.auth().currentUser.uid
+      let unique = true
+      await firebase.database().ref('favourites/' + userId).once('value').then(data => {
+        if(data.val()) {
+          const snap = Object.values(data.val())
+          snap.forEach(obj => {
+            if(Object.values(obj).includes(payload.name)) {
+              unique = false
+              console.log(unique)
+            }
+          })
+        }
+      })
+      if (unique) {
+        firebase.database().ref('favourites/' + userId).push({
+          name: payload.name,
+          id: payload.id,
+          img: payload.img
+        }).then(() => {
+          console.log('Added')
+          commit('addFavourite', payload)
+        }).catch(err => console.log(err))
+      }
     },
     loadFavourites({ commit }, payload){
       commit('loadFavourite', payload)
