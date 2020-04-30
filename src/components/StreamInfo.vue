@@ -37,7 +37,7 @@
           </span>
         </div>
         <div class="d-flex pl-3 mb-5">
-          <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium)" class="far fa-star pl-2 pt-1 text-white mr-2"></i>
+          <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, type)" class="far fa-star pl-2 pt-1 text-white mr-2"></i>
           <span id="add-to-fav" class="text-muted">Add to favourites
           </span>
         </div>
@@ -82,7 +82,8 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      stream: ""
+      stream: "",
+      type: "streams"
     };
   },
   computed: {
@@ -109,11 +110,12 @@ export default {
         console.log(error);
       }
     },
-    addToFav(name, id, img){
+    addToFav(name, id, img, type){
       this.$store.dispatch('addToFavourites', {
         name: name,
         id: id,
-        img: img
+        img: img,
+        type: this.type
       })
     }
   },

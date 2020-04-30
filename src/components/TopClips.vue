@@ -24,7 +24,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium)"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium, type)"></i>
                             </div>
                             </div>
                         </div>
@@ -46,53 +46,55 @@
     import Button from "@/components/Button";
 
     export default {
-    name: "TopClips",
-    components: {
-        Button
-    },
-    data() {
-        return {
-        topClips: [],
-        clipsShown: 4
-        };
-    },
-    computed: {
-        splicedClips() {
-        const splicedClips = this.topClips.slice(0, this.clipsShown);
-        return splicedClips;
-        }
-    },
-    methods: {
-        //TODO separate replacing size of thumbnails to another method
-        async getTopClips() {
-            try {
-                const response = await axios.get(
-                "https://api.twitch.tv/kraken/clips/top",
-                    {
-                        headers: {
-                        "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
-                        Accept: "application/vnd.twitchtv.v5+json"
-                        }
-                    }
-                )
-                this.topClips = response.data.clips
-
-            } catch (error) {
-                console.log(error);
+        name: "TopClips",
+        components: {
+            Button
+        },
+        data() {
+            return {
+            topClips: [],
+            clipsShown: 4,
+            type: "clips"
+            };
+        },
+        computed: {
+            splicedClips() {
+                const splicedClips = this.topClips.slice(0, this.clipsShown);
+                return splicedClips;
             }
         },
-        addToFav(name, id, img){
-            this.$store.dispatch('addToFavourites', {
-                name: name,
-                id: id,
-                img: img
-            })
+        methods: {
+            //TODO separate replacing size of thumbnails to another method
+            async getTopClips() {
+                try {
+                    const response = await axios.get(
+                    "https://api.twitch.tv/kraken/clips/top",
+                        {
+                            headers: {
+                            "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+                            Accept: "application/vnd.twitchtv.v5+json"
+                            }
+                        }
+                    )
+                    this.topClips = response.data.clips
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            addToFav(name, id, img, type){
+                this.$store.dispatch('addToFavourites', {
+                    name: name,
+                    id: id,
+                    img: img,
+                    type: this.type
+                })
+            }
+        },
+        mounted() {
+            this.getTopClips();
+            // this.setThumbnailSize();
         }
-    },
-    mounted() {
-        this.getTopClips();
-        // this.setThumbnailSize();
-    }
     };
 </script>
 

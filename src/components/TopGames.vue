@@ -16,7 +16,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large)"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
                             </div>
                             </div>
                         </div>
@@ -45,7 +45,8 @@
     data() {
         return {
             topGames: [],
-            gamesShown: 4
+            gamesShown: 4,
+            type: "games"
         }
     },
     computed: {
@@ -72,12 +73,12 @@
                 console.log(error);
             }
         },
-        addToFav(name, id, img){
+        addToFav(name, id, img, type){
             this.$store.dispatch('addToFavourites', {
                 name: name,
                 id: id,
-                img: img
-
+                img: img,
+                type: this.type
             })
         }
     },

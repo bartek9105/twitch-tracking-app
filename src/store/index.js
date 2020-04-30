@@ -19,9 +19,21 @@ export default new Vuex.Store({
     user (state) {
       return state.user
     },
-    favourites (state) {
-      return state.favourites
-    }
+    favouriteGames (state) {
+      if (typeof state.favourites == 'object') {
+        return Object.values(state.favourites).filter(el => el.type=='games')
+      }
+    },
+    favouriteStreams (state) {
+      if (typeof state.favourites == 'object') {
+        return Object.values(state.favourites).filter(el => el.type=='streams')
+      }
+    },
+    favouriteClips (state) {
+      if (typeof state.favourites == 'object') {
+        return Object.values(state.favourites).filter(el => el.type=='clips')
+      }
+    },
   },
   mutations: {
     setUser (state, payload) {
@@ -35,6 +47,10 @@ export default new Vuex.Store({
     },
     remove (state, payload) {
       Vue.delete(state.favourites, payload)
+    },
+    userLogout(state) {
+      state.user = null
+      state.favourites = []
     }
   },
   actions: {
@@ -65,7 +81,7 @@ export default new Vuex.Store({
     async addToFavourites({ commit }, payload) {   
       const userId = firebase.auth().currentUser.uid
       let unique = true
-      await firebase.database().ref('favourites/' + userId).once('value').then(data => {
+      await firebase.database().ref(`favourites/${userId}`).once('value').then(data => {
         if(data.val()) {
           const snap = Object.values(data.val())
           snap.forEach(obj => {
@@ -77,18 +93,22 @@ export default new Vuex.Store({
         }
       })
       if (unique) {
-        firebase.database().ref('favourites/' + userId).push({
+        await firebase.database().ref(`favourites/${userId}`).push({
           name: payload.name,
           id: payload.id,
-          img: payload.img
+          img: payload.img,
+          type: payload.type
         }).then(() => {
           Vue.toasted.success("Added to favourites", toastOptions)
           commit('addFavourite', payload)
         }).catch(err => console.log(err))
       }
     },
-    loadFavourites({ commit }, payload){
-      commit('loadFavourite', payload)
+    loadFavourites({ commit }){
+      firebase.database().ref('favourites/' + firebase.auth().currentUser.uid).once('value').then(data => {
+        commit('loadFavourite', data.val())
+      }); 
+
     },
     removeFavourite({ commit }, payload) {
       const userId = firebase.auth().currentUser.uid 
@@ -97,7 +117,16 @@ export default new Vuex.Store({
         Vue.toasted.success("Removed from favourites", toastOptions)
       }).catch(err => console.log(err))
       commit('remove', payload)
-    }
+    },
+    async logout({ commit }) {
+      try {
+        await firebase.auth().signOut();
+        Vue.toasted.success("Successfully logged out", toastOptions)
+        commit('userLogout')
+      } catch (error) {
+        console.log(error);
+      }
+    } 
   },
   modules: {
   }

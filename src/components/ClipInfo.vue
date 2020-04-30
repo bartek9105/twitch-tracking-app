@@ -27,7 +27,7 @@
                     </div>
                     <div class="text-white">
                         <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                        <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium)"></i>
+                        <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium, type)"></i>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,8 @@ export default {
     data(){
         return{
             clipSlug: this.$route.params.slug,
-            clip: ''
+            clip: '',
+            type: 'clips'
         };
     },
     computed: {
@@ -70,11 +71,12 @@ export default {
                 console.log(error);
             }
         },
-        addToFav(name, id, img){
+        addToFav(name, id, img, type){
             this.$store.dispatch('addToFavourites', {
                 name: name,
                 id: id,
-                img: img
+                img: img,
+                type: this.type
             })
         }
     },

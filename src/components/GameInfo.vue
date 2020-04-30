@@ -8,7 +8,7 @@
           <div class="col-lg-5 col-md-5 col-sm-5 col-10 offset-xs-2 h-100 w-75 mt-3 ml-4">
             <h2 class="text-white mb-3">{{ game[0].name }}</h2>
             <span id="add-to-fav" class="text-muted">Add to favourite</span>
-            <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game[0].name, game[0]._id, game[0].box.large)"></i>
+            <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game[0].name, game[0]._id, game[0].box.large, type)"></i>
           </div>
       </div>
     </div>
@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       gameName: this.$route.params.gameName,
-      game: ''
+      game: '',
+      type: 'games'
     };
   },
   methods: {
@@ -43,12 +44,12 @@ export default {
         console.log(error);
       }
     },
-    addToFav(name, id, img){
+    addToFav(name, id, img, type){
       this.$store.dispatch('addToFavourites', {
-          name: name,
-          id: id,
-          img: img
-
+        name: name,
+        id: id,
+        img: img,
+        type: this.type
       })
     }
   },
