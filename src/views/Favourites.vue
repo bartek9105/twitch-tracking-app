@@ -12,7 +12,7 @@
         <button @click="removeFav(index)">Remove</button>
       </div>
     </div>
-    
+    <Footer/>
   </div>
 </template>
 

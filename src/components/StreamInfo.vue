@@ -38,7 +38,7 @@
         </div>
         <div class="d-flex pl-3 mb-5">
           <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium)" class="far fa-star pl-2 pt-1 text-white mr-2"></i>
-          <span id="add-to-fav" class="text-muted">Dodaj do ulubionych
+          <span id="add-to-fav" class="text-muted">Add to favourites
           </span>
         </div>
       </div>

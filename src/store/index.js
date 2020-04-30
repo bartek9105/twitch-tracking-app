@@ -5,6 +5,11 @@ import firebase from 'firebase'
 
 Vue.use(Vuex)
 
+let toastOptions = {
+  position: 'bottom-center',
+  duration: 3000
+}
+
 export default new Vuex.Store({
   state: {
     user: null,
@@ -66,7 +71,7 @@ export default new Vuex.Store({
           snap.forEach(obj => {
             if(Object.values(obj).includes(payload.name)) {
               unique = false
-              console.log(unique)
+              Vue.toasted.error("This item is already added to favourites", toastOptions)
             }
           })
         }
@@ -77,7 +82,7 @@ export default new Vuex.Store({
           id: payload.id,
           img: payload.img
         }).then(() => {
-          console.log('Added')
+          Vue.toasted.success("Added to favourites", toastOptions)
           commit('addFavourite', payload)
         }).catch(err => console.log(err))
       }
@@ -89,6 +94,7 @@ export default new Vuex.Store({
       const userId = firebase.auth().currentUser.uid 
       firebase.database().ref('favourites/' + userId).child(payload).remove().then(() => {
         commit('remove', payload)
+        Vue.toasted.success("Removed from favourites", toastOptions)
       }).catch(err => console.log(err))
       commit('remove', payload)
     }
