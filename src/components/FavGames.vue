@@ -1,16 +1,4 @@
 <template>
-    <!--<div>
-        <Header>
-            <template v-slot:header>Favourite games</template>
-        </Header>
-        <div class="container text-white">
-            <div class="text-white" v-for="el in getGames" :key="el.id">
-                <h4>{{el.name}}</h4>
-                <img :src="el.img">
-                <button @click="removeFav(el.id)">Remove</button>
-            </div>
-        </div>
-    </div>-->
     <div id="fav-games">
         <p id="fav-games-header" class="ml-4 pt-3">| Favourite games</p>
         <div class="container-fluid">
