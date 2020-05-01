@@ -95,17 +95,18 @@ export default {
       this.$store.dispatch('logout')
     },
     getUserData() {
-      var user = firebase.auth().currentUser;
+      const user = firebase.auth().currentUser;
       const email = user.email;
       const uid = user.uid;
-      var arr = [];
+      const arr = [];
       firebase
         .database()
         .ref(`user_avatars/${uid}`)
         .once("value")
         .then(function(snapshot) {
-          var item = snapshot.val().avatarId;
-          arr.push(item);
+          if (snapshot.val()) {
+            arr.push(snapshot.val().avatarId);
+          }
         })
         .catch(error => {
           console.log(error);

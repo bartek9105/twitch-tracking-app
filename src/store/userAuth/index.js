@@ -9,7 +9,8 @@ let toastOptions = {
 
 export default {
   state: {
-    user: null
+    user: null,
+    favourites: []
   },
   getters: {
     user (state) {

@@ -4,10 +4,10 @@
             <template v-slot:header>Favourite clips</template>
         </Header>
         <div class="container text-white">
-                <div class="text-white" v-for="el in getClips" :key="parseInt(el.id)">
-                    <h4>{{el.name}}</h4>
-                    <img :src="el.img">
-                    <button @click="removeFav(parseInt(el.id))">Remove</button>
+                <div class="text-white" v-for="clip in getClips" :key="clip.id">
+                    <h4>{{clip.name}}</h4>
+                    <img :src="clip.img">
+                    <button @click="removeFav(clip.id)">Remove</button>
                 </div>
         </div>
     </div>

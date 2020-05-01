@@ -1,6 +1,6 @@
 <template>
     <div id="top-game-streams">
-        <p id="top-streams-header" class="ml-4 pt-5">| Top streams for  {{ this.gameName }}</p>
+        <p id="top-streams-header" class="ml-4 pt-5">| Top streams for  {{ gameName }}</p>
         <div class="container-fluid">
             <div class="row">
                 <template v-for="stream in splicedStreams">

@@ -66,7 +66,6 @@ export default {
     }
   },
   methods: {
-    //TODO separate replacing size of thumbnails to another method
     async getTopStreams() {
       try {
         const response = await axios.get(

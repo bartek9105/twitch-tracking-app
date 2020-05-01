@@ -65,8 +65,7 @@ export default {
             try {
                 const provider = new firebase.auth.FacebookAuthProvider()
                 const result = await firebase.auth().signInWithPopup(provider)
-                this.$router.push('/')
-                console.log(result.user)                
+                this.$router.push('/')              
             } catch (error) {
                 console.log(error.message)
             }
@@ -75,8 +74,7 @@ export default {
             try {
                 const provider = new firebase.auth.GoogleAuthProvider()
                 const result = await firebase.auth().signInWithPopup(provider)
-                this.$router.push('/')
-                console.log(result.user)                
+                this.$router.push('/')              
             } catch (error) {
                 console.log(error.message)
             }
