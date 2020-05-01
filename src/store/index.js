@@ -19,21 +19,9 @@ export default new Vuex.Store({
     user (state) {
       return state.user
     },
-    favouriteGames (state) {
-      if (typeof state.favourites == 'object') {
-        return Object.values(state.favourites).filter(el => el.type=='games')
-      }
-    },
-    favouriteStreams (state) {
-      if (typeof state.favourites == 'object') {
-        return Object.values(state.favourites).filter(el => el.type=='streams')
-      }
-    },
-    favouriteClips (state) {
-      if (typeof state.favourites == 'object') {
-        return Object.values(state.favourites).filter(el => el.type=='clips')
-      }
-    },
+    favourites (state) {
+      return state.favourites
+    }
   },
   mutations: {
     setUser (state, payload) {
@@ -46,9 +34,9 @@ export default new Vuex.Store({
       state.favourites = payload
     },
     remove (state, payload) {
-      state.favourites.splice(state.favourites.findIndex(item => {
-        item.id == payload
-      }))
+      state.favourites = Object.values(state.favourites).filter(item => {
+        return item.id != payload
+      })
     },
     userLogout(state) {
       state.user = null
@@ -97,7 +85,7 @@ export default new Vuex.Store({
       if (unique) {
         firebase.database().ref(`favourites/${userId}`).push({
           name: payload.name,
-          id: payload.id,
+          id: parseInt(payload.id),
           img: payload.img,
           type: payload.type
         }).then(() => {
@@ -108,13 +96,15 @@ export default new Vuex.Store({
     },
     loadFavourites({ commit }){
       firebase.database().ref('favourites/' + firebase.auth().currentUser.uid).once('value').then(data => {
-        commit('loadFavourite', data.val())
+        if(data.val()){
+          commit('loadFavourite', data.val())
+        }
       }); 
 
     },
     removeFavourite({ commit }, payload) {
       const userId = firebase.auth().currentUser.uid 
-      firebase.database().ref('favourites/' + userId).orderByChild('id').equalTo(payload).once('value').then((snapshot) => {
+      firebase.database().ref('favourites/' + userId).orderByChild('id').equalTo(parseInt(payload)).once('value').then((snapshot) => {
         snapshot.forEach(child => {
           child.ref.remove()
         })

@@ -29,7 +29,16 @@ export default {
         FavStreams,
         FavClips,
         Footer
+    },
+    methods: {
+      loadFavs(){
+        this.$store.dispatch('loadFavourites')
+      }
+    },
+    created() {
+      this.loadFavs()
     }
+
 }
 </script>
 

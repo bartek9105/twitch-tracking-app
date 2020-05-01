@@ -4,11 +4,11 @@
             <template v-slot:header>Favourite clips</template>
         </Header>
         <div class="container text-white">
-            <div class="text-white" v-for="(el, index) in favouriteClips" :key="el.id">
-                <h4>{{el.name}}</h4>
-                <img :src="el.img">
-                <button @click="removeFav(el.id)">Remove</button>
-            </div>
+                <div class="text-white" v-for="el in getClips" :key="parseInt(el.id)">
+                    <h4>{{el.name}}</h4>
+                    <img :src="el.img">
+                    <button @click="removeFav(parseInt(el.id))">Remove</button>
+                </div>
         </div>
     </div>
 </template>
@@ -22,7 +22,11 @@ export default {
         Header
     },
     computed: {
-      ...mapGetters(["favouriteClips"])
+      getClips() {
+          return Object.values(this.$store.getters.favourites).filter(item => {
+              return item.type == 'clips'
+          })
+      }
     },
     methods: {
         removeFav(id) {

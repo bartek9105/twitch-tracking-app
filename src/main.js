@@ -21,8 +21,5 @@ Vue.use(Toasted, {
 new Vue({
   router,
   store,
-  render: h => h(App),
-  created () {
-    this.$store.dispatch('loadFavourites')
-  }
+  render: h => h(App)
 }).$mount('#app')
