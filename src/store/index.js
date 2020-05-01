@@ -46,7 +46,9 @@ export default new Vuex.Store({
       state.favourites = payload
     },
     remove (state, payload) {
-      Vue.delete(state.favourites, payload)
+      state.favourites.splice(state.favourites.findIndex(item => {
+        item.id == payload
+      }))
     },
     userLogout(state) {
       state.user = null
