@@ -46,7 +46,7 @@ export default {
       if (unique) {
         firebase.database().ref(`favourites/${userId}`).push({
           name: payload.name,
-          id: parseInt(payload.id),
+          id: payload.id,
           img: payload.img,
           type: payload.type
         }).then(() => {
@@ -65,7 +65,7 @@ export default {
     },
     removeFavourite({ commit }, payload) {
       const userId = firebase.auth().currentUser.uid 
-      firebase.database().ref('favourites/' + userId).orderByChild('id').equalTo(parseInt(payload)).once('value').then((snapshot) => {
+      firebase.database().ref('favourites/' + userId).orderByChild('id').equalTo(payload).once('value').then((snapshot) => {
         snapshot.forEach(child => {
           child.ref.remove()
         })
