@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-dark vh-100">
+  <div id="app" class="bg-dark">
     <router-view/>
 
   </div>
@@ -33,5 +33,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .fa-star {
+    &:hover {
+      cursor: pointer
+    }
+  }
 </style>

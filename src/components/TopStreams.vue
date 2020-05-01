@@ -18,11 +18,13 @@
               <div class="d-sm-flex">
                 <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
               </div>
-              <div class="d-sm-flex pl-2">
-                <span id="add-to-fav" class="text-muted">Dodaj do ulubionych<i class="far fa-star text-white pl-2 pt-1"></i></span>
-              </div>
             </div>
             </router-link>
+            <div class="d-sm-flex pl-2">
+                <span id="add-to-fav" class="text-muted">Add to favourites
+                </span>
+                <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, type)" class="far fa-star pl-2 pt-1"></i>
+            </div>
           </div>
         </div>
       </template>
@@ -50,6 +52,7 @@ export default {
     return {
       streams: [],
       streamsShown: 4,
+      type: "streams"
     };
   },
   computed: {
@@ -68,18 +71,26 @@ export default {
       try {
         const response = await axios.get(
           "https://api.twitch.tv/kraken/streams/",
-          {
-            headers: {
-              "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
-              Accept: "application/vnd.twitchtv.v5+json"
+            {
+              headers: {
+                "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+                Accept: "application/vnd.twitchtv.v5+json"
+              }
             }
-          }
         );
         this.streams = response.data.streams
       } catch (error) {
         console.log(error);
       }
     },
+    addToFav(name, id, img, type){
+      this.$store.dispatch('addToFavourites', {
+        name: name,
+        id: id,
+        img: img,
+        type: this.type
+      })
+    }
   },
   mounted() {
     this.getTopStreams();

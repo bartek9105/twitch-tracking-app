@@ -11,14 +11,10 @@ export default {};
 </script>
 
 <style>
-#footer {
-  background-color: #1a202c;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-#footer-text {
-  font-size: 15px;
-}
+  #footer {
+    background-color: #1a202c;
+  }
+  #footer-text {
+    font-size: 15px;
+  }
 </style>

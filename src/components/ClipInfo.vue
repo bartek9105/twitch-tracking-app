@@ -25,6 +25,10 @@
                             {{ clip.views }}
                         </span>
                     </div>
+                    <div class="text-white">
+                        <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                        <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium, type)"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,11 +39,12 @@
 import axios from "axios";
 
 export default {
-    name: 'gameInfo',
+    name: 'ClipInfo',
     data(){
         return{
             clipSlug: this.$route.params.slug,
-            clip: ''
+            clip: '',
+            type: 'clips'
         };
     },
     computed: {
@@ -50,21 +55,29 @@ export default {
     },
     methods: {
         async getClip() {
-        try {
-            const response = await axios.get(
-            `https://api.twitch.tv/kraken/clips/${this.clipSlug}`,
-            {
-                headers: {
-                    "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
-                    Accept: "application/vnd.twitchtv.v5+json"
+            try {
+                const response = await axios.get(
+                `https://api.twitch.tv/kraken/clips/${this.clipSlug}`,
+                {
+                    headers: {
+                        "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+                        Accept: "application/vnd.twitchtv.v5+json"
+                    }
                 }
+                );
+                this.clip = await response.data
+                console.log(this.clip)
+            } catch (error) {
+                console.log(error);
             }
-            );
-            this.clip = await response.data
-            console.log(this.clip)
-        } catch (error) {
-            console.log(error);
-        }
+        },
+        addToFav(name, id, img, type){
+            this.$store.dispatch('addToFavourites', {
+                name: name,
+                id: id,
+                img: img,
+                type: this.type
+            })
         }
     },
     mounted() {

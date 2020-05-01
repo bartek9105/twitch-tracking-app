@@ -16,7 +16,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
                             </div>
                             </div>
                         </div>
@@ -44,34 +44,43 @@
     },
     data() {
         return {
-        topGames: [],
-        gamesShown: 4
-        };
+            topGames: [],
+            gamesShown: 4,
+            type: "games"
+        }
     },
     computed: {
         splicedGames() {
-        const splicedGames = this.topGames.slice(0, this.gamesShown);
-        return splicedGames;
+            const splicedGames = this.topGames.slice(0, this.gamesShown);
+            return splicedGames;
         }
     },
     methods: {
         //TODO separate replacing size of thumbnails to another method
         async getTopGames() {
-        try {
-            const response = await axios.get(
-            "https://api.twitch.tv/kraken/games/top",
-            {
-                headers: {
-                "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
-                Accept: "application/vnd.twitchtv.v5+json"
-                }
+            try {
+                const response = await axios.get(
+                "https://api.twitch.tv/kraken/games/top",
+                    {
+                        headers: {
+                        "Client-ID": "2c6c0j18xxty4mx9e43pn1p5s210u9",
+                        Accept: "application/vnd.twitchtv.v5+json"
+                        }
+                    }
+                );
+                this.topGames = response.data.top
+            } catch (error) {
+                console.log(error);
             }
-            );
-            this.topGames = response.data.top
-        } catch (error) {
-            console.log(error);
-        }
         },
+        addToFav(name, id, img, type){
+            this.$store.dispatch('addToFavourites', {
+                name: name,
+                id: id,
+                img: img,
+                type: this.type
+            })
+        }
     },
     mounted() {
         this.getTopGames();

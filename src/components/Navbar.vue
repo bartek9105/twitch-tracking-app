@@ -81,16 +81,8 @@ export default {
     }
   },
   methods: {
-    async logout() {
-      try {
-        const result = await firebase.auth().signOut();
-
-        this.$toasted.global.success({
-          message: "Successfully logged out"
-        });
-      } catch (error) {
-        console.log(error);
-      }
+    logout() {
+      this.$store.dispatch('logout')
     },
     getUserData() {
       var user = firebase.auth().currentUser;
