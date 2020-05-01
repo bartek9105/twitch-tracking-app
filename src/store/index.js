@@ -51,8 +51,10 @@ export default new Vuex.Store({
           id: result.user.uid
         }
         commit('setUser', newUser)
+        Vue.toasted.success("Successfully registered", toastOptions)
         router.push('/login')         
       } catch (error) {
+        Vue.toasted.error(`${error}`, toastOptions)
         console.log(error)
       }
     }, 
@@ -63,8 +65,10 @@ export default new Vuex.Store({
           id: result.user.uid
         }     
         commit('setUser', newUser)
+        Vue.toasted.success("Successfully registered", toastOptions)
         router.push('/') 
       } catch (error) {
+        Vue.toasted.error(`${error}`, toastOptions)
         console.log(error)
       }
     },
