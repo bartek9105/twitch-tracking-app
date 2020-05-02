@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="container d-flex vh-100 text-white justify-content-center align-items-center">
+    <div id="login-container">
+        <div class="container d-flex text-white justify-content-center align-items-center pt-5 pb-5">
             <div class="col-sm-12 col-md-6 text-center">
                 <i class="fab fa-twitch h1"></i>
                 <Logo/>
@@ -91,5 +91,8 @@ export default {
         .btn-google {
             background-color: #dd4b39;
         }
+    }
+    #login-container {
+        min-height: 100vh;
     }
 </style>
