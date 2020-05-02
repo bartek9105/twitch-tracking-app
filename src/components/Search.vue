@@ -41,10 +41,10 @@
         <div id="games" class="container-fluid">
           <div class="row justify-content-center ml-5">
             <template v-for="game in found.games.slice(0, this.itemShown)">
-              <div class="mb-4" :key="game.id">
-                <div class="card border-0 w-75">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="game.id">
+                <div class="card border-0 w-75 h-100">
                   <router-link :to="{name: 'Game', params: {gameName: game.name}}">
-                    <img :src="game.box.large" class="img-fluid" alt="game-thumbnail" />
+                    <img :src="game.box.large" class="img-fluid card-img-top" alt="game-thumbnail" />
                     <div class="search card-body pl-0">
                       <div class="d-flex">
                         <h5 class="card-title text-white text-truncate">
@@ -52,12 +52,12 @@
                           {{ game.name }}
                         </h5>
                       </div>
+                      <div class="d-flex pl-2">
+                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                    <i class="far fa-star pl-2 pt-1 text-white" @click="addToFav(game.name, game._id, game.box.large, typeGame)"></i>
+                  </div>
                     </div>
                   </router-link>
-                  <div class="d-flex pl-2">
-                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                    <i class="far fa-star pl-2 pt-1" @click="addToFav(game.name, game._id, game.box.large, typeGame)"></i>
-                  </div>
                 </div>
               </div>
             </template>
@@ -100,13 +100,13 @@
                           {{ stream.viewers }}
                         </p>
                       </div>
-                    </div>
-                  </router-link>
-                  <div class="d-sm-flex pl-2">
+                      <div class="d-sm-flex pl-2">
                     <span id="add-to-fav" class="text-muted">Add to favourites
                     </span>
-                    <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)" class="far fa-star pl-2 pt-1"></i>
+                    <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)" class="far fa-star text-white pl-2 pt-1"></i>
                   </div>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </template>
@@ -160,6 +160,8 @@ export default {
             }
           );
           this.found = await response.data;
+          console.log(response)
+          this.setThumnbailSize()
         }
       } catch (error) {
         console.log(error);

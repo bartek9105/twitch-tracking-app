@@ -1,5 +1,5 @@
 <template>
-  <div id="single-stream-content" class="container-fluid">
+  <div id="single-stream-content" class="container-fluid" v-if="this.stream != null">
     <h2
       id="stream-title"
       class="text-white justify-content-center m-auto pl-5 row pb-md-4"
@@ -37,7 +37,7 @@
           </span>
         </div>
         <div class="d-flex pl-3 mb-5">
-          <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, type)" class="far fa-star pl-2 pt-1 text-white mr-2"></i>
+          <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, type)" class="far fa-star pt-1 text-white mr-2"></i>
           <span id="add-to-fav" class="text-muted">Add to favourites
           </span>
         </div>
@@ -73,6 +73,7 @@
     </div>
   </div>
     </div>
+    <h1 v-else class="text-white text-center">Stream is currently offline</h1>
 </template>
 
 <script>
