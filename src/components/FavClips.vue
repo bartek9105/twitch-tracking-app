@@ -1,22 +1,34 @@
 <template>
+    <!--<div>
+        <Header>
+            <template v-slot:header>Favourite clips</template>
+        </Header>
+        <div class="container text-white">
+                <div class="text-white" v-for="clip in getClips" :key="clip.id">
+                    <h4>{{clip.name}}</h4>
+                    <img :src="clip.img">
+                    <button @click="removeFav(clip.id)">Remove</button>
+                </div>
+        </div>
+    </div>-->
     <div id="fav-clips">
         <p id="fav-clips-header" class="ml-4 pt-3">| Favourite clips</p>
         <div class="container-fluid">
             <div class="row">
                 <template>
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" v-for="el in getClips" :key="el.id">
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" v-for="clip in getClips" :key="clip.id">
                         <div class="card border-0 h-100 w-100">
-                            <router-link :to="{name: 'Clip', params:{slug: el.id}}">
-                                <img :src="el.img" class="card-img-top img-fluid" alt="clip-thumbnail" />
+                            <router-link :to="{name: 'Clip', params:{slug: clip.id}}">
+                                <img :src="clip.img" class="card-img-top img-fluid" alt="clip-thumbnail" />
                             </router-link>
                             <div class="card-body">
                               <div class="d-sm-flex h-45">
-                                  <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ el.name }}</h5>
+                                  <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ clip.name }}</h5>
                               </div>
 
                               <div class="d-sm-flex">
                                 <span id="add-to-fav" class="text-muted">Remove</span>
-                                <i class="fa fa-trash text-white pl-2 pt-1" style="cursor:pointer;" @click="removeFav(el.id)"></i>
+                                <i class="fa fa-trash text-white pl-2 pt-1" style="cursor:pointer;" @click="removeFav(clip.id)"></i>
                               </div>
                             </div>
                         </div>

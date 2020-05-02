@@ -35,7 +35,7 @@
         <div class="row justify-content-center mb-5">
             <button
                 class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
-                @click="clipsShown += 4" v-if="clipsShown < this.topClips.length"
+                @click="clipsShown += 4" v-if="clipsShown < topClips.length"
             >Load More</button>
         </div>
     </div>
@@ -52,10 +52,11 @@
         },
         data() {
             return {
-            topClips: [],
-            clipsShown: 4,
-            type: "clips"
-            };
+                topClips: [],
+                clipsShown: 4,
+                type: "clips"
+                }
+            
         },
         computed: {
             splicedClips() {
@@ -64,7 +65,6 @@
             }
         },
         methods: {
-            //TODO separate replacing size of thumbnails to another method
             async getTopClips() {
                 try {
                     const response = await axios.get(
@@ -77,7 +77,6 @@
                         }
                     )
                     this.topClips = response.data.clips
-
                 } catch (error) {
                     console.log(error);
                 }
@@ -93,7 +92,6 @@
         },
         mounted() {
             this.getTopClips();
-            // this.setThumbnailSize();
         }
     };
 </script>

@@ -27,7 +27,7 @@
         <div class="row justify-content-center">
             <button
                 class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow m-auto"
-                @click="gamesShown += 4" v-if="gamesShown < this.topGames.length"
+                @click="gamesShown += 4" v-if="gamesShown < topGames.length"
             >Load More</button>
         </div>
     </div>
@@ -56,7 +56,6 @@
         }
     },
     methods: {
-        //TODO separate replacing size of thumbnails to another method
         async getTopGames() {
             try {
                 const response = await axios.get(
@@ -84,9 +83,8 @@
     },
     mounted() {
         this.getTopGames();
-        // this.setThumbnailSize();
     }
-    };
+    }
 </script>
 
 <style>

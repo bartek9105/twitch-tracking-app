@@ -3,11 +3,11 @@
     <h2
       id="stream-title"
       class="text-white justify-content-center m-auto pl-5 row pb-md-4"
-    >{{this.stream.channel.status}}</h2>
+    >{{stream.channel.status}}</h2>
     <div class="row">
       <div id="stream-thumbnail" class="embed-responsive embed-responsive-16by9 mb-xl-5 mr-5 mt-xl-5 ml-md-5 mt-md-0 ml-5 ml-xl-5 mb-md-5">
         <iframe class="embed-responsive-item"
-          :src="'https://player.twitch.tv/?channel=' + this.stream.channel.display_name"
+          :src="'https://player.twitch.tv/?channel=' + stream.channel.display_name"
           frameborder="0"
           scrolling="no"
           allowfullscreen="true"
@@ -20,13 +20,13 @@
         <div class="d-flex pl-3 mb-3">
           <span id="game-title" class="text-muted">
             <i class="fas fa-play-circle text-muted pr-1"></i>
-            Game: {{this.stream.game}}
+            Game: {{stream.game}}
           </span>
         </div>
         <div class="d-flex pl-3 mb-3">
           <span id="viewers" class="text-muted">
             <i class="fas fa-chart-line text-muted pr-1"></i>
-            Viewers: {{this.stream.viewers}}
+            Viewers: {{stream.viewers}}
           </span>
         </div>
         <div class="d-flex pl-3 mb-3">
@@ -49,13 +49,13 @@
         <div class="d-flex pl-3 mb-3">
           <span id="streamer-name" class="text-muted">
             <i class="fas fa-user text-muted pr-1"></i>
-            Name: {{this.stream.channel.display_name}}
+            Name: {{stream.channel.display_name}}
           </span>
         </div>
         <div class="d-flex pl-3 mb-3">
           <span id="followers" class="text-muted">
             <i class="fas fa-chart-area pr-1"></i>
-            Followers: {{this.stream.channel.followers}}
+            Followers: {{stream.channel.followers}}
           </span>
         </div>
         <div class="d-flex pl-3 mb-3">
@@ -68,7 +68,7 @@
       <div class="row justify-content-xl-center justify-content-md-start">
       <div id="description" class="pl-5 pt-xl-4 pt-md-0 pt-3 ml-md-4 ml-4">
         <span class="text-white">Description:</span>
-        <p class="text-muted pt-3 mb-5 pb-5 mr-5">{{this.stream.channel.description}}</p>
+        <p class="text-muted pt-3 mb-5 pb-5 mr-5">{{stream.channel.description}}</p>
       </div>
     </div>
   </div>
@@ -76,7 +76,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
+
 export default {
   name: "StreamInfo",
   data() {
