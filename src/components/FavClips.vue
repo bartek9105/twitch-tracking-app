@@ -1,16 +1,4 @@
 <template>
-    <!--<div>
-        <Header>
-            <template v-slot:header>Favourite clips</template>
-        </Header>
-        <div class="container text-white">
-                <div class="text-white" v-for="clip in getClips" :key="clip.id">
-                    <h4>{{clip.name}}</h4>
-                    <img :src="clip.img">
-                    <button @click="removeFav(clip.id)">Remove</button>
-                </div>
-        </div>
-    </div>-->
     <div id="fav-clips">
         <p id="fav-clips-header" class="ml-4 pt-3">| Favourite clips</p>
         <div class="container-fluid">
