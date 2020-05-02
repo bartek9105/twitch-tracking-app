@@ -24,7 +24,7 @@
 
                             <div class="d-sm-flex pl-2">
                                 <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.tracking_id, clip.thumbnails.medium, type)"></i>
+                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.slug, clip.thumbnails.medium, type)"></i>
                             </div>
                             </div>
                         </div>
