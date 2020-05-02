@@ -1,6 +1,6 @@
 <template>
     <div id="top-game-streams">
-        <p id="top-streams-header" class="ml-4 pt-5">| Top streams for  {{ gameName }}</p>
+        <p id="top-streams-header" class="text-info ml-4 pt-5">| Top streams for  {{ gameName }}</p>
         <div class="container-fluid">
             <div class="row">
                 <template v-for="stream in splicedStreams">
@@ -88,7 +88,6 @@ export default {
 
 <style>
     #top-streams-header {
-        color: #38b2ac;
         font-size: 23px;
     }
     .card {

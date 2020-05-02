@@ -1,6 +1,6 @@
 <template>
     <div id="top-clips">
-        <p id="top-clips-header" class="ml-4 pt-3">| Top clips</p>
+        <p id="top-clips-header" class="text-info ml-5 pt-3">| Top clips</p>
         <div class="container-fluid">
             <div class="row">
                 <template v-for="clip in splicedClips">
@@ -11,7 +11,7 @@
                             </router-link>
                             <div class="card-body">
                             <div class="d-sm-flex h-45">                           
-                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ clip.title }}</h5>
+                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="text-info pr-1">|</span>{{ clip.title }}</h5>
                             </div>
                             <div class="d-sm-inline-flex">
                                 <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
@@ -98,23 +98,21 @@
 
 <style>
     #top-clips-header {
-    color: #38b2ac;
-    font-size: 23px;
+        font-size: 23px;
     }
     .card {
-    width: 18rem;
+        width: 18rem;
     }
     .card-body {
-    background-color: #1a202c;
+        background-color: #1a202c;
     }
     #top-clips {
-    background-color: #2d3748;
+        background-color: #2d3748;
     }
     #green-line {
-    font-size: 20px;
-    color: #38b2ac;
+        font-size: 20px;
     }
     .card-title {
-    font-size: 15px;
+        font-size: 15px;
     }
 </style>

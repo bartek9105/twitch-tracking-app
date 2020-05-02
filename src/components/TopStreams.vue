@@ -1,24 +1,24 @@
 <template>
   <div id="top-streams">
-    <p id="top-streams-header" class="ml-4 pt-3">| Top streams</p>
+    <p id="top-streams-header" class="text-info ml-5 mt-3">| Top streams</p>
     <div class="m-auto container-fluid">
       <div class="row">
       <template v-for="stream in splicedStreams">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5" :key="stream.id">
+        <div class="col-sm-6 col-lg-3 mb-5" :key="stream.id">
           <div class="card border-0 h-100 w-100">
             <router-link :to="{name: 'Stream', params: {id: stream.channel._id, stream: stream}}">
-            <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
-            <div class="card-body">
-              <div class="d-flex">
-                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ stream.channel.status }}</h5>
+              <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
+              <div class="card-body">
+                <div class="d-flex">
+                  <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="text-info pr-1">|</span>{{ stream.channel.status }}</h5>
+                </div>
+                <div class="d-sm-flex">
+                  <p class="streamer-name text-muted"><i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>{{ stream.channel.display_name }}</p>
+                </div>
+                <div class="d-sm-flex">
+                  <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
+                </div>
               </div>
-              <div class="d-sm-flex">
-                <p class="streamer-name text-muted"><i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>{{ stream.channel.display_name }}</p>
-              </div>
-              <div class="d-sm-flex">
-                <p class="stream-viewer-count text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ stream.viewers }}</p>
-              </div>
-            </div>
             </router-link>
             <div class="d-sm-flex pl-2">
                 <span id="add-to-fav" class="text-muted">Add to favourites
@@ -99,7 +99,6 @@ export default {
 
 <style>
 #top-streams-header {
-  color: #38b2ac;
   font-size: 23px;
 }
 .card {
@@ -113,7 +112,6 @@ export default {
 }
 #green-line {
   font-size: 20px;
-  color: #38b2ac;
 }
 .card-title {
   font-size: 15px;

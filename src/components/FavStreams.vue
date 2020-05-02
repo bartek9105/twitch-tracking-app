@@ -1,6 +1,6 @@
 <template>
     <div id="fav-streams">
-        <p id="fav-streams-header" class="ml-4 pt-3">| Favourite streams</p>
+        <p v-if="getStreams.length > 0" id="fav-streams-header" class="text-info ml-4 pt-3">| Favourite streams</p>
         <div class="container-fluid">
             <div class="row">
                 <template>
@@ -52,7 +52,6 @@ export default {
 
 <style>
     #fav-streams-header {
-      color: #38b2ac;
       font-size: 23px;
     }
     #fav-streams {

@@ -19,7 +19,6 @@ import FavGames from '@/components/FavGames'
 import FavStreams from '@/components/FavStreams'
 import FavClips from '@/components/FavClips'
 import Footer from '@/components/Footer'
-import firebase from 'firebase'
 
 export default {
     components: {
@@ -34,7 +33,7 @@ export default {
       loadFavs(){
         this.$store.dispatch('loadFavourites')
       }
-    },
+    }, 
     created() {
       this.loadFavs()
     }
