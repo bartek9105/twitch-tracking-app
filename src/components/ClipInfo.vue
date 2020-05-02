@@ -66,7 +66,6 @@ export default {
                 }
                 );
                 this.clip = await response.data
-                console.log(this.clip)
             } catch (error) {
                 console.log(error);
             }
