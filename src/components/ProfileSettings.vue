@@ -24,8 +24,13 @@
 
 <script>
 import firebase from "firebase"
-
+import Vue from 'vue'
+let toastOptions = {
+  position: 'bottom-center',
+  duration: 3000
+}
 export default {
+  
   name: "ProfileSettings",
   data() {
     return {
@@ -68,21 +73,15 @@ export default {
           .set({
             avatarId: url
           }).then(function() {
-              alert("Success")
-              //TODO add toasted messages
-            //   this.$toasted.global.success({
-            //         message: 'Avatar saved!'
-            //     })
+              Vue.toasted.success("Avatar successfully set", toastOptions)
           }).catch(error => {
               console.log(error)
-              alert("Failed")
-            //   this.$toasted.global.error({
-            //         message: 'Error occured!'
-            //     })
+              Vue.toasted.error(error, toastOptions)
           });
       }
     }
   },
+
   mounted() {
     this.listAllAvatars()
   }
