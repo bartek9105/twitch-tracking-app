@@ -15,6 +15,10 @@ export default {
 <style>
   #footer {
     background-color: #1a202c;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
   }
   #footer-text {
     font-size: 15px;
