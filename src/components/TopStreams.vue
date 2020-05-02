@@ -1,6 +1,6 @@
 <template>
   <div id="top-streams">
-    <p id="top-streams-header" class="ml-4 pt-3">| Top streams</p>
+    <p id="top-streams-header" class="text-info ml-5 mt-3">| Top streams</p>
     <div class="m-auto container-fluid">
       <div class="row">
         <template v-for="stream in splicedStreams">
@@ -111,7 +111,6 @@ export default {
 
 <style>
 #top-streams-header {
-  color: #38b2ac;
   font-size: 23px;
 }
 .card {
@@ -125,7 +124,6 @@ export default {
 }
 #green-line {
   font-size: 20px;
-  color: #38b2ac;
 }
 .card-title {
   font-size: 15px;

@@ -133,10 +133,10 @@ export default {
 li {
   a {
     &:hover {
-      color: #38b2ac !important;
+      color: #117a8b !important;
       text-decoration: none;
       .logout-icon {
-        color: #38b2ac !important;
+        color: #117a8b !important;
       }
     }
   }
@@ -152,7 +152,7 @@ li {
   font-size: 15px;
 }
 a .active {
-  color: #38b2ac !important;
+  color: #117a8b !important;
 }
 #profile-avatar {
   width: 21px;

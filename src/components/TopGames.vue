@@ -1,6 +1,6 @@
 <template>
     <div id="top-games">
-        <p id="top-games-header" class="ml-4 pt-3">| Top games</p>
+        <p id="top-games-header" class="text-info ml-5 pt-3">| Top games</p>
         <div class="container-fluid">
             <div class="row ml-5">
                 <template v-for="game in splicedGames">
@@ -11,12 +11,12 @@
                             </router-link>
                             <div class="card-body">
                             <div class="d-sm-flex h-45">
-                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="pr-1">|</span>{{ game.game.name }}</h5>
+                                <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="text-info pr-1">|</span>{{ game.game.name }}</h5>
                             </div>
 
-                            <div class="d-sm-flex pl-2">
-                                <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
+                            <div class="d-sm-flex">
+                                <span id="add-to-fav" class="text-muted">Add to favourites</span>
+                                <i class="far fa-star text-white pl-1 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
                             </div>
                             </div>
                         </div>
@@ -24,9 +24,9 @@
                 </template>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-3">
             <button
-                class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow m-auto"
+                class="btn btn-info mb-5 rounded-pill px-5 shadow m-auto"
                 @click="gamesShown += 4" v-if="gamesShown < topGames.length"
             >Load More</button>
         </div>
@@ -89,23 +89,21 @@
 
 <style>
     #top-games-header {
-    color: #38b2ac;
-    font-size: 23px;
+        font-size: 23px;
     }
     .card {
-    width: 18rem;
+        width: 18rem;
     }
     .card-body {
-    background-color: #1a202c;
+        background-color: #1a202c;
     }
     #top-games {
-    background-color: #2d3748;
+        background-color: #2d3748;
     }
     #green-line {
-    font-size: 20px;
-    color: #38b2ac;
+        font-size: 20px;
     }
     .card-title {
-    font-size: 15px;
+        font-size: 15px;
     }
 </style>

@@ -1,18 +1,6 @@
 <template>
-    <!--<div>
-        <Header>
-            <template v-slot:header>Favourite clips</template>
-        </Header>
-        <div class="container text-white">
-                <div class="text-white" v-for="clip in getClips" :key="clip.id">
-                    <h4>{{clip.name}}</h4>
-                    <img :src="clip.img">
-                    <button @click="removeFav(clip.id)">Remove</button>
-                </div>
-        </div>
-    </div>-->
     <div id="fav-clips">
-        <p id="fav-clips-header" class="ml-4 pt-3">| Favourite clips</p>
+        <p v-if="getClips.length > 0" id="fav-clips-header" class="text-info ml-4 pt-3">| Favourite clips</p>
         <div class="container-fluid">
             <div class="row pb-5">
                 <template>
@@ -65,7 +53,6 @@ export default {
 
 <style>
     #fav-clips-header {
-      color: #38b2ac;
       font-size: 23px;
     }
     #fav-clips {
