@@ -37,7 +37,7 @@
       <button class="btn btn-info rounded-pill mb-5 mt-5 px-5 shadow" @click="search()">Search</button>
     </div>
     <div id="found-items">
-        <div id="found-games" v-if="found.games">
+      <div id="found-games" v-if="found.games">
         <div id="games" class="container-fluid">
           <div class="row justify-content-center ml-5">
             <template v-for="game in found.games.slice(0, this.itemShown)">
@@ -45,19 +45,22 @@
                 <div class="card border-0 w-75 h-100">
                   <router-link :to="{name: 'Game', params: {gameName: game.name}}">
                     <img :src="game.box.large" class="img-fluid card-img-top" alt="game-thumbnail" />
-                    <div class="search card-body pl-0">
-                      <div class="d-flex">
-                        <h5 class="card-title text-white text-truncate">
-                          <span id="green-line" class="pr-1 pl-2">|</span>
-                          {{ game.name }}
-                        </h5>
-                      </div>
-                      <div class="d-flex pl-2">
-                  </div>
-                    </div>
                   </router-link>
-                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                    <i class="far fa-star pl-2 pt-1" @click="addToFavGame(game.name, game._id, game.box.large, typeGame)"></i>
+                  <div class="search card-body pl-0">
+                    <div class="d-flex">
+                      <h5 class="card-title text-white text-truncate">
+                        <span id="green-line" class="pr-1 pl-2">|</span>
+                        {{ game.name }}
+                      </h5>
+                    </div>
+                    <div class="d-flex pl-2">
+                      <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                      <i
+                        class="far fa-star pl-2 text-white pt-1"
+                        @click="addToFavGame(game.name, game._id, game.box.large, typeGame)"
+                      ></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </template>
@@ -81,32 +84,34 @@
                     :to="{name: 'Stream', params: {id: stream.channel._id, stream: stream}}"
                   >
                     <img :src="stream.preview.medium" class="card-img-top" alt="stream-thumbnail" />
-                    <div class="search card-body">
-                      <div class="d-flex">
-                        <h5 class="card-title text-white pt-1 text-truncate">
-                          <span id="green-line" class="pr-1">|</span>
-                          {{ stream.channel.status }}
-                        </h5>
-                      </div>
-                      <div class="d-sm-flex">
-                        <p class="streamer-name text-muted">
-                          <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
-                          {{ stream.channel.display_name }}
-                        </p>
-                      </div>
-                      <div class="d-sm-flex">
-                        <p class="stream-viewer-count text-muted">
-                          <i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1"></i>
-                          {{ stream.viewers }}
-                        </p>
-                      </div>
-                      <div class="d-sm-flex pl-2">
-                  </div>
-                    </div>
                   </router-link>
-                    <span id="add-to-fav" class="text-muted">Add to favourites
-                    </span>
-                    <i @click="addToFavStream(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)" class="far fa-star pl-2 pt-1"></i>
+                  <div class="search card-body">
+                    <div class="d-flex">
+                      <h5 class="card-title text-white pt-1 text-truncate">
+                        <span id="green-line" class="pr-1">|</span>
+                        {{ stream.channel.status }}
+                      </h5>
+                    </div>
+                    <div class="d-sm-flex">
+                      <p class="streamer-name text-muted">
+                        <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
+                        {{ stream.channel.display_name }}
+                      </p>
+                    </div>
+                    <div class="d-sm-flex">
+                      <p class="stream-viewer-count text-muted">
+                        <i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1"></i>
+                        {{ stream.viewers }}
+                      </p>
+                    </div>
+                    <div class="d-sm-flex pl-2">
+                      <span id="add-to-fav" class="text-muted">Add to favourites</span>
+                      <i
+                        @click="addToFavStream(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)"
+                        class="far fa-star text-white pl-2 pt-1"
+                      ></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </template>
@@ -140,8 +145,8 @@ export default {
       itemName: "Choose",
       queryType: "",
       itemShown: 4,
-      typeGame: 'games',
-      typeStream: 'streams'
+      typeGame: "games",
+      typeStream: "streams"
     };
   },
   methods: {
@@ -162,28 +167,28 @@ export default {
             }
           );
           this.found = await response.data;
-          console.log(response)
-          this.setThumnbailSize()
+          console.log(response);
+          this.setThumnbailSize();
         }
       } catch (error) {
         console.log(error);
       }
     },
-    addToFavGame(name, id, img, type){
-      this.$store.dispatch('addToFavourites', {
+    addToFavGame(name, id, img, type) {
+      this.$store.dispatch("addToFavourites", {
         name: name,
         id: id,
         img: img,
         type: this.typeGame
-      })
+      });
     },
-    addToFavStream(name, id, img, type){
-      this.$store.dispatch('addToFavourites', {
+    addToFavStream(name, id, img, type) {
+      this.$store.dispatch("addToFavourites", {
         name: name,
         id: id,
         img: img,
         type: this.typeStream
-      })
+      });
     }
   },
   mounted() {}
