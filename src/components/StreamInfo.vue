@@ -1,5 +1,5 @@
 <template>
-  <div id="single-stream-content" class="container-fluid">
+  <div id="single-stream-content" class="container-fluid" v-if="this.stream != null">
     <h2
       id="stream-title"
       class="text-white justify-content-center m-auto pl-5 row pb-md-4"
@@ -73,6 +73,7 @@
     </div>
   </div>
     </div>
+    <h1 v-else class="text-white text-center">Stream is currently offline</h1>
 </template>
 
 <script>
