@@ -21,7 +21,7 @@
         <i v-if="toggled==false" class="fas fa-bars text-white"></i>
         <i v-if="toggled==true" class="fas fa-times text-white"></i>
       </button>
-      <div class="collapse navbar-collapse text-right justify-content-md-end mt-4" id="mainmenu">
+      <div class="collapse navbar-collapse text-right justify-content-md-end mt-4 mt-lg-0 mt-md-0" id="mainmenu">
         <div id="profile-mobile" class="justify-content-end text-left d-md-none d-flex mb-4">
           <span class="text-white pt-1">{{email}}</span>
           <div style="width: 2.5rem" v-if="url.length > 0" class="bg-secondary rounded-circle pl-2 pr-2 pt-1 pb-1 mb-2 ml-3">
