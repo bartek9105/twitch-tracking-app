@@ -44,6 +44,7 @@ export default {
 
 <style>
   .favourites{
-    height: auto;
+    height: 100vh;
+    position: relative;
   }
 </style>
