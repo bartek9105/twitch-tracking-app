@@ -1,7 +1,7 @@
 <template>
     <div id="top-clips">
-        <p id="top-clips-header" class="text-info ml-5 pt-3">| Top clips</p>
-        <div class="container-fluid">
+        <p id="top-clips-header" class="text-info ml-4 pt-3">| Top clips</p>
+        <div class="container-fluid pb-3">
             <div class="row">
                 <template v-for="clip in splicedClips">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4" :key="clip.tracking_id">
@@ -13,17 +13,17 @@
                             <div class="d-sm-flex h-45">                           
                                 <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="text-info pr-1">|</span>{{ clip.title }}</h5>
                             </div>
-                            <div class="d-sm-inline-flex">
-                                <i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>
-                                <p class="streamer-name text-muted">{{ clip.curator.name }}</p>
+
+                            <div class="d-sm-flex">
+                                <p class="text-muted"><i class="fas fa-user pr-1 pl-2 pt-1 text-muted"></i>{{ clip.curator.name }}</p>
                             </div>
-                            <div class="d-sm-inline-flex">
-                                <i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>
-                                <p class="stream-viewer-count text-muted">{{ clip.views }}</p>
+
+                            <div class="d-sm-flex">
+                                <p class="text-muted"><i class="fas fa-chart-line text-muted pr-1 pl-2 pt-1 "></i>{{ clip.views }}</p>
                             </div>
 
                             <div class="d-sm-flex pl-2">
-                                <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                                <span id="add-to-fav" class="text-muted">Add to favourites</span>
                                 <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(clip.title, clip.slug, clip.thumbnails.medium, type)"></i>
                             </div>
                             </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="row justify-content-center mb-5">
             <button
-                class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow"
+                class="btn btn-info mb-5 rounded-pill px-5 shadow"
                 @click="clipsShown += 4" v-if="clipsShown < topClips.length"
             >Load More</button>
         </div>

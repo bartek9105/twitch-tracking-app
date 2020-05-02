@@ -14,9 +14,9 @@
                                 <h5 class="card-title text-white pt-1 text-truncate"><span id="green-line" class="text-info pr-1">|</span>{{ game.game.name }}</h5>
                             </div>
 
-                            <div class="d-sm-flex pl-2">
-                                <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                                <i class="far fa-star text-white pl-2 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
+                            <div class="d-sm-flex">
+                                <span id="add-to-fav" class="text-muted">Add to favourites</span>
+                                <i class="far fa-star text-white pl-1 pt-1" @click="addToFav(game.game.name, game.game._id, game.game.box.large, type)"></i>
                             </div>
                             </div>
                         </div>
@@ -24,9 +24,9 @@
                 </template>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-3">
             <button
-                class="btn btn-info mt-5 mb-5 rounded-pill px-5 shadow m-auto"
+                class="btn btn-info mb-5 rounded-pill px-5 shadow m-auto"
                 @click="gamesShown += 4" v-if="gamesShown < topGames.length"
             >Load More</button>
         </div>
