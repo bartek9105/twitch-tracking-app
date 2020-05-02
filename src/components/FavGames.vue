@@ -1,6 +1,6 @@
 <template>
     <div id="fav-games">
-        <p id="fav-games-header" class="ml-4 pt-3">| Favourite games</p>
+        <p v-if="getGames.length > 0" id="fav-games-header" class="text-info ml-4 pt-3">| Favourite games</p>
         <div class="container-fluid">
             <div class="row">
                 <template>
@@ -52,7 +52,6 @@ export default {
 
 <style>
     #fav-games-header {
-      color: #38b2ac;
       font-size: 23px;
     }
     #fav-games {

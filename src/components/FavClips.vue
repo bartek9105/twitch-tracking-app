@@ -1,6 +1,6 @@
 <template>
     <div id="fav-clips">
-        <p id="fav-clips-header" class="ml-4 pt-3">| Favourite clips</p>
+        <p v-if="getClips.length > 0" id="fav-clips-header" class="text-info ml-4 pt-3">| Favourite clips</p>
         <div class="container-fluid">
             <div class="row">
                 <template>
@@ -52,7 +52,6 @@ export default {
 
 <style>
     #fav-clips-header {
-      color: #38b2ac;
       font-size: 23px;
     }
     #fav-clips {
