@@ -14,7 +14,7 @@
     <div id="fav-clips">
         <p id="fav-clips-header" class="ml-4 pt-3">| Favourite clips</p>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row pb-5">
                 <template>
                   <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" v-for="clip in getClips" :key="clip.id">
                         <div class="card border-0 h-100 w-100">
@@ -36,6 +36,7 @@
                 </template>
             </div>
         </div>
+        <div class="row mt-5"></div>
     </div>
 </template>
 
