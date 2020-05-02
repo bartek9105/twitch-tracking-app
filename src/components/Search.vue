@@ -53,11 +53,11 @@
                         </h5>
                       </div>
                       <div class="d-flex pl-2">
-                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
-                    <i class="far fa-star pl-2 pt-1 text-white" @click="addToFav(game.name, game._id, game.box.large, typeGame)"></i>
                   </div>
                     </div>
                   </router-link>
+                    <span id="add-to-fav" class="text-muted">Add to favourite</span>
+                    <i class="far fa-star pl-2 pt-1" @click="addToFavGame(game.name, game._id, game.box.large, typeGame)"></i>
                 </div>
               </div>
             </template>
@@ -101,12 +101,12 @@
                         </p>
                       </div>
                       <div class="d-sm-flex pl-2">
-                    <span id="add-to-fav" class="text-muted">Add to favourites
-                    </span>
-                    <i @click="addToFav(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)" class="far fa-star text-white pl-2 pt-1"></i>
                   </div>
                     </div>
                   </router-link>
+                    <span id="add-to-fav" class="text-muted">Add to favourites
+                    </span>
+                    <i @click="addToFavStream(stream.channel.status, stream.channel._id, stream.preview.medium, typeStream)" class="far fa-star pl-2 pt-1"></i>
                 </div>
               </div>
             </template>
@@ -139,7 +139,9 @@ export default {
       found: [],
       itemName: "Choose",
       queryType: "",
-      itemShown: 4
+      itemShown: 4,
+      typeGame: 'games',
+      typeStream: 'streams'
     };
   },
   methods: {
@@ -167,13 +169,20 @@ export default {
         console.log(error);
       }
     },
-    addToFav(name, id, img, typeGame, typeStream){
+    addToFavGame(name, id, img, type){
       this.$store.dispatch('addToFavourites', {
         name: name,
         id: id,
         img: img,
-        typeGame: "games",
-        typeStream: "streams"
+        type: this.typeGame
+      })
+    },
+    addToFavStream(name, id, img, type){
+      this.$store.dispatch('addToFavourites', {
+        name: name,
+        id: id,
+        img: img,
+        type: this.typeStream
       })
     }
   },
