@@ -168,7 +168,6 @@ export default {
           );
           this.found = await response.data;
           console.log(response);
-          this.setThumnbailSize();
         }
       } catch (error) {
         console.log(error);
