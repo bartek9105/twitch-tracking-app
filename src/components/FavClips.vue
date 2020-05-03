@@ -24,7 +24,6 @@
                 </template>
             </div>
         </div>
-        <div class="row mt-5"></div>
     </div>
 </template>
 

@@ -38,5 +38,7 @@ export default {
 #game-page-container {
   position: relative;
   min-height: 100vh;
+  margin: 0;
+  padding-bottom: 6rem;
 }
 </style>
