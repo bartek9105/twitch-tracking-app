@@ -1,5 +1,5 @@
 <template>
-  <div id="single-stream-content" class="container-fluid" v-if="this.stream != null">
+  <div id="single-stream-content" class="container-fluid m-auto" v-if="this.stream != null">
     <h2
       id="stream-title"
       class="text-white justify-content-center m-auto pl-5 row pb-md-4"
@@ -65,7 +65,7 @@
           </span>
         </div>
       </div>
-      <div class="row justify-content-xl-center justify-content-md-start">
+      <div class="row justify-content-xl-center justify-content-md-start m-auto">
       <div id="description" class="pl-5 pt-xl-4 pt-md-0 pt-3 ml-md-4 ml-4">
         <span class="text-white">Description:</span>
         <p class="text-muted pt-3 mb-5 pb-5 mr-5">{{stream.channel.description}}</p>

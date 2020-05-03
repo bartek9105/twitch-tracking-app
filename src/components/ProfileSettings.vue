@@ -19,9 +19,7 @@
     <div class="row justify-content-center">
       <button class="btn btn-info rounded-pill mb-5 px-5 shadow" @click="save">Save</button>
     </div>
-    <div id="credits" class="mb-5 text-center text-muted">Avatars created by studiogstock - www.freepik.com</div>
-    <div class="row mt-5"></div>
-    <div class="row mt-5"></div>
+    <div id="credits" class="text-center text-muted">Avatars created by studiogstock - www.freepik.com</div>
   </div>
 </template>
 

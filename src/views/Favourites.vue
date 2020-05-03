@@ -45,5 +45,7 @@ export default {
   .favourites{
     min-height: 100vh;
     position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
   }
 </style>

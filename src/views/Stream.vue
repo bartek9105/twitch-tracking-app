@@ -33,7 +33,10 @@ export default {
 </script>
 <style>
 #stream-container {
-  min-height: 100vh;
   position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 6rem;
+  background-color: #2d3748;
 }
 </style>

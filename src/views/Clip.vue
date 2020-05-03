@@ -1,5 +1,5 @@
 <template>
-    <div id="game-page-container">
+    <div id="clip-page-container">
         <Navbar />
         <Header>
             <template v-slot:header>Clip overview</template>
@@ -27,5 +27,10 @@ export default {
 </script>
 
 <style>
-
+    #clip-page-container {
+        position: relative;
+        margin: 0;
+        padding-bottom: 6rem;
+        min-height: 100vh;
+    }
 </style>
